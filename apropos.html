@@ -109,11 +109,11 @@ ul{list-style:none;padding:0}
 .ticks li::before{content:"";position:absolute;left:0;top:.72em;width:.8rem;height:2px;background:var(--accent)}
 
 /* À propos */
-.about{display:grid;grid-template-columns:minmax(320px,390px) 1fr;gap:clamp(2.5rem,6vw,5rem);align-items:center;margin-top:clamp(2.5rem,5vw,4rem)}
-.about-photo{order:1;position:sticky;top:100px;display:flex;align-items:flex-end;justify-content:center;min-height:520px}
+.about{display:grid;grid-template-columns:minmax(300px,360px) minmax(0,1fr);gap:clamp(2rem,5vw,4rem);align-items:center;margin-top:clamp(2.5rem,5vw,4rem)}
+.about-photo{order:1;position:sticky;top:100px;display:flex;align-items:center;justify-content:center;min-height:0}
 .about-photo .frame{position:relative;width:100%;display:flex;align-items:flex-end;justify-content:center;background:none;border:0;border-radius:0;overflow:visible}
-.about-photo img{display:block;width:min(100%,390px);height:auto;max-height:620px;object-fit:contain;object-position:center bottom;filter:none;border:0;border-radius:0;box-shadow:none}
-.about-photo .silhouette-sm{width:82%;max-height:560px;fill:#262629}
+.about-photo img{display:block;width:100%;height:auto;max-height:100%;object-fit:contain;object-position:center;filter:none;border:0;border-radius:0;box-shadow:none}
+.about-photo .silhouette-sm{width:82%;max-height:100%;fill:#262629}
 .about-text{order:2}
 .about-text p+p{margin-top:1.1rem}
 .about-text p{color:#cfcfd2}
@@ -232,7 +232,7 @@ ul{list-style:none;padding:0}
 @media (max-width:900px){
   .hero-grid,.contact,.svc-grid{grid-template-columns:1fr}
   .about{grid-template-columns:1fr}
-  .about-photo{position:static;min-height:0;width:min(100%,460px);margin-inline:auto}
+  .about-photo{position:static;min-height:0;width:min(100%,360px);margin-inline:auto}
   .svc-main{grid-row:auto}
   .portrait-wrap{width:min(78%,360px)}
   .works{grid-template-columns:repeat(2,1fr)}
@@ -242,7 +242,7 @@ ul{list-style:none;padding:0}
   .h2{font-size:1.4rem}
   .about-text p{font-size:.92rem}
   .foot{font-size:.8rem}
-  .about-photo{width:100%;min-height:0}.about-photo img{width:min(100%,430px);max-height:560px}
+  .about-photo{width:100%;min-height:0}.about-photo img{width:100%;max-height:none}
   .works{grid-template-columns:1fr}
   .q{flex-basis:100%}
   .stats{flex-wrap:wrap;row-gap:1rem}
@@ -342,7 +342,7 @@ const CONFIG = {
   email: "nouroudeendabina26@gmail.com",
   comeup: "https://comeup.com/fr/@dnd-expjuriste",
   linkedin: "https://www.linkedin.com/in/nourou-deen-dabina/",
-  photo: "./im15.jpg"
+  photo: "./im10.jpg"
 };
 (function () {
   const $ = (s, r = document) => r.querySelector(s);
