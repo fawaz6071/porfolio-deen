@@ -120,12 +120,23 @@ ul{list-style:none;padding:0}
 /* ---------- Sections ---------- */
 .section{padding:clamp(2rem,4.5vw,3rem) 0 clamp(4rem,9vw,7rem)}
 .section-alt{background:var(--panel)}
+/* Section claire (Services) : contraste fort avec l'Accueil */
+.section-light{background:#f5f4ef;color:#141414}
+.section-light .h2{color:#141414}
+.section-light .lead{color:#5a5a5f}
+.section-light .svc-tagline{color:#000}
+.section-light .svc-tagline .sep{color:#b8971f}
+.section-light .svc-card{background:#ffffff;border-color:#e7e5dd;box-shadow:0 1px 2px rgba(20,20,20,.04)}
+.section-light .svc-card:hover{border-color:#ffffff;box-shadow:0 16px 30px rgba(20,20,20,.1)}
+.section-light .svc-card h3{color:#141414}
+.section-light .svc-desc{color:#5a5a5f}
+.section-light .svc-icon{background:#141414;color:var(--accent)}
+.section-light .svc-card:hover .svc-icon{background:var(--accent);color:#141414}
 .head{margin-bottom:clamp(2rem,5vw,3.5rem)}
 .h2{font:600 clamp(1.7rem,3.6vw,2.6rem)/1.15 var(--serif);letter-spacing:-.02em;text-align:center}
 .lead{color:var(--muted);max-width:56ch;margin-top:.9rem;margin-inline:auto;text-align:center}
 .panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--r-lg);padding:clamp(1.5rem,3vw,2.25rem)}
 .section-alt .panel{background:var(--bg)}
-.section-alt .svc-main{background:linear-gradient(180deg,rgba(252,236,101,.09),transparent 45%),var(--bg)}
 .section-alt .pills li{background:var(--bg)}
 .section-alt .q{background:var(--bg)}
 .section:not(.section-alt) .work{background:var(--panel)}
@@ -142,15 +153,24 @@ ul{list-style:none;padding:0}
 .about-text{order:2}
 .about-text p+p{margin-top:1.1rem}
 .about-text p{color:#cfcfd2}
-.svc-tagline{text-align:center;color:var(--muted);font-weight:600;font-size:.92rem;max-width:920px;margin:0 auto clamp(2rem,4vw,2.75rem);line-height:2}
+.svc-tagline{overflow:hidden;max-width:100%;margin:0 0 clamp(2rem,4vw,2.75rem);-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.svc-tagline-track{display:flex;width:max-content;white-space:nowrap;animation:svc-scroll 32s linear infinite;transform:translateZ(0);backface-visibility:hidden}
+.svc-tagline-item{display:flex;align-items:center;flex:none;padding-right:3rem;color:var(--muted);font-weight:800;font-size:.92rem}
 .svc-tagline .sep{color:var(--accent);margin:0 .6rem;font-weight:700}
+@keyframes svc-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.svc-tagline{mask-image:none;-webkit-mask-image:none}.svc-tagline-track{animation:none;flex-wrap:wrap;width:auto}.svc-tagline-item{white-space:normal;padding-right:0}.svc-tagline-item:nth-child(2){display:none}}
 /* Services */
 .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
-.svc-main{background:linear-gradient(180deg,rgba(252,236,101,.09),transparent 45%),var(--panel);border-color:rgba(252,236,101,.4)}
-.svc-icon{display:grid;place-items:center;width:50px;height:50px;border-radius:var(--r-md);background:var(--accent-soft);color:var(--accent);margin-bottom:1.3rem}
+.svc-card{position:relative;overflow:hidden;background:var(--panel);border:1px solid var(--line);border-radius:var(--r-lg);padding:clamp(1.75rem,3vw,2.5rem);transition:transform .25s,border-color .25s}
+.section-alt .svc-card{background:var(--bg)}
+.svc-card::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--accent);transition:width .3s}
+.svc-card:hover{transform:translateY(-4px);border-color:rgba(252,236,101,.4)}
+.svc-card:hover::after{width:100%}
+.svc-icon{display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:var(--accent-soft);color:var(--accent);margin-bottom:1.5rem;transition:background .25s,color .25s}
 .svc-icon .ic{width:26px;height:26px}
-.panel h3{font:600 1.3rem/1.25 var(--serif);margin-bottom:.6rem}
-.panel .sub{color:var(--muted);margin-bottom:1.3rem;max-width:52ch}
+.svc-card:hover .svc-icon{background:var(--accent);color:var(--on-accent)}
+.svc-card h3{font:600 1.3rem/1.25 var(--serif);margin-bottom:.75rem}
+.svc-desc{color:var(--muted)}
 
 /* Expériences */
 .timeline{margin:0 auto;max-width:680px;padding-left:210px;box-sizing:border-box}
@@ -244,7 +264,7 @@ ul{list-style:none;padding:0}
 @media (hover:none){.wa-tip{display:none}}
 
 /* ---------- Textes justifiés ---------- */
-.about-text p,.panel .sub,.ticks li,.work p,.q p{text-align:justify;text-justify:inter-word;hyphens:auto;-webkit-hyphens:auto}
+.about-text p,.svc-desc,.ticks li,.work p,.q p{text-align:justify;text-justify:inter-word;hyphens:auto;-webkit-hyphens:auto}
 /* ---------- Responsive ---------- */
 @media (max-width:1060px){
   .burger{display:grid}
@@ -259,7 +279,6 @@ ul{list-style:none;padding:0}
   .hero-grid,.contact,.svc-grid{grid-template-columns:1fr}
   .about{grid-template-columns:1fr}
   .about-photo{position:static;max-width:260px;margin-inline:auto}
-  .svc-main{grid-row:auto}
   .portrait-wrap{width:min(78%,360px)}
   .works{grid-template-columns:repeat(2,1fr)}
   .q{flex-basis:calc((100% - var(--gap)) / 2)}
@@ -353,47 +372,33 @@ ul{list-style:none;padding:0}
 </section>
 
 <!-- ===================== SERVICES ===================== -->
-<section class="section" id="services">
+<section class="section section-light" id="services">
   <div class="wrap">
-    <p class="svc-tagline">Juriste Freelance <span class="sep">|</span> Gestion d'Appel d'Offres - Marchés Publics <span class="sep">|</span> Marketing Numérique : Copywriting - SEO - Graphisme - CM <span class="sep">|</span> OF/Qualiopi/EDOF/NDA/CPF/OPCO/CertifPro <span class="sep">|</span> Admin <span class="sep">|</span> VAE/Thèse/Mémoire <span class="sep">|</span> Conformité AUDIT CDC</p>
+    <div class="svc-tagline" aria-label="Juriste Freelance, Gestion d'Appel d'Offres - Marchés Publics, Marketing Numérique : Copywriting - SEO - Graphisme - CM, OF/Qualiopi/EDOF/NDA/CPF/OPCO/CertifPro, Admin, VAE/Thèse/Mémoire, Conformité AUDIT CDC">
+      <div class="svc-tagline-track" aria-hidden="true">
+        <span class="svc-tagline-item">Juriste Freelance <span class="sep">|</span> Gestion d'Appel d'Offres - Marchés Publics <span class="sep">|</span> Marketing Numérique : Copywriting - SEO - Graphisme - CM <span class="sep">|</span> OF/Qualiopi/EDOF/NDA/CPF/OPCO/CertifPro <span class="sep">|</span> Admin <span class="sep">|</span> VAE/Thèse/Mémoire <span class="sep">|</span> Conformité AUDIT CDC <span class="sep">|</span></span>
+        <span class="svc-tagline-item">Juriste Freelance <span class="sep">|</span> Gestion d'Appel d'Offres - Marchés Publics <span class="sep">|</span> Marketing Numérique : Copywriting - SEO - Graphisme - CM <span class="sep">|</span> OF/Qualiopi/EDOF/NDA/CPF/OPCO/CertifPro <span class="sep">|</span> Admin <span class="sep">|</span> VAE/Thèse/Mémoire <span class="sep">|</span> Conformité AUDIT CDC <span class="sep">|</span></span>
+      </div>
+    </div>
     <div class="head">
       <h2 class="h2">Services</h2>
       <p class="lead">Trois domaines d'intervention, un seul interlocuteur pour vos dossiers.</p>
     </div>
     <div class="svc-grid">
-      <article class="panel svc-main">
+      <article class="svc-card">
         <div class="svc-icon"><svg class="ic ic-s"><use href="#i-file"/></svg></div>
         <h3>Gestion complète des Appels d'Offres</h3>
-        <p class="sub">De l'analyse du DCE à la soumission dématérialisée, je gère l'intégralité de vos dossiers de marchés publics et privés. Mon approche rigoureuse garantit des taux de succès élevés, avec une expertise dans la rédaction de mémoires techniques complexes et la conformité administrative.</p>
-        <ul class="ticks">
-          <li>Veille et sélection des appels d'offres adaptés à votre activité</li>
-          <li>Analyse du dossier de consultation et des critères de notation</li>
-          <li>Montage et rédaction du dossier de candidature</li>
-          <li>Contrôle des pièces administratives avant dépôt</li>
-          <li>Suivi après dépôt et relances</li>
-        </ul>
+        <p class="svc-desc">De l'analyse du DCE à la soumission dématérialisée, je gère l'intégralité de vos dossiers de marchés publics et privés. Mon approche rigoureuse garantit des taux de succès élevés, avec une expertise dans la rédaction de mémoires techniques complexes et la conformité administrative.</p>
       </article>
-      <article class="panel">
+      <article class="svc-card">
         <div class="svc-icon"><svg class="ic ic-s"><use href="#i-scale"/></svg></div>
         <h3>Assistance juridique et administrative</h3>
-        <p class="sub">J'apporte un soutien essentiel pour la rédaction de contrats, la gestion précontentieuse et le suivi de dossiers administratifs. Fort d'une expérience en cabinet d'huissier et en entreprise, je sécurise vos opérations immobilières et commerciales.</p>
-        <ul class="ticks">
-          <li>Contrats, courriers et avis juridiques</li>
-          <li>Assistance administrative</li>
-          <li>Mise en conformité réglementaire</li>
-          <li>Audit de conformité</li>
-        </ul>
+        <p class="svc-desc">J'apporte un soutien essentiel pour la rédaction de contrats, la gestion précontentieuse et le suivi de dossiers administratifs. Fort d'une expérience en cabinet d'huissier et en entreprise, je sécurise vos opérations immobilières et commerciales.</p>
       </article>
-      <article class="panel">
+      <article class="svc-card">
         <div class="svc-icon"><svg class="ic ic-s"><use href="#i-mega"/></svg></div>
         <h3>Marketing Digital & Projets Web</h3>
-        <p class="sub">Je pilote vos stratégies d'acquisition client, développe des outils de communication innovants et gère la production de contenus digitaux et commerciaux. Mon objectif est de valoriser votre marque en ligne et d'accroître votre visibilité grâce à des campagnes performantes et un suivi SEO/SEA.</p>
-        <ul class="ticks">
-          <li>Copywriting</li>
-          <li>Graphisme</li>
-          <li>Community management</li>
-          <li>Support commercial</li>
-        </ul>
+        <p class="svc-desc">Je pilote vos stratégies d'acquisition client, développe des outils de communication innovants et gère la production de contenus digitaux et commerciaux. Mon objectif est de valoriser votre marque en ligne et d'accroître votre visibilité grâce à des campagnes performantes et un suivi SEO/SEA.</p>
       </article>
     </div>
   </div>
