@@ -44,11 +44,11 @@
   --panel:#0f0f10;
   --panel-2:#181819;
   --line:#26262a;
-  --text:#ecebe8;
+  --text:#ffffff;
   --muted:#a0a0a6;
-  --accent:#F7BB2B;
-  --accent-soft:rgba(255,106,0,.14);
-  --on-accent:#140800;
+  --accent:#fcec65;
+  --accent-soft:rgba(252,236,101,.14);
+  --on-accent:#000000;
   --serif:"Montserrat",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   --sans:"Montserrat",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   --r-lg:22px;
@@ -73,9 +73,9 @@ ul{list-style:none;padding:0}
 .ic-s{fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 
 /* ---------- Boutons ---------- */
-.btn{white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:48px;padding:0 1.6rem;border-radius:var(--r-sm);font:700 .95rem var(--sans);border:1.5px solid transparent;cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+.btn{white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:48px;padding:0 1.6rem;border-radius:var(--r-sm);font:700 .95rem var(--sans);border:1.5px solid transparent;cursor:pointer;transition:background .2s,border-color .2s,color .2s,filter .2s}
 .btn-primary{background:var(--accent);color:var(--on-accent)}
-.btn-primary:hover{background:#ff8226}
+.btn-primary:hover{filter:brightness(1.12)}
 .btn-ghost{border-color:#4b4b50;color:var(--text);background:transparent}
 .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
 .btn-sm{min-height:40px;padding:0 1.15rem;font-size:.88rem}
@@ -98,24 +98,13 @@ ul{list-style:none;padding:0}
 
 /* ---------- Accueil ---------- */
 .hero{position:relative;overflow:hidden;padding:clamp(2rem,6vw,4.5rem) 0 clamp(3.5rem,8vw,6rem)}
-.hero::before{content:"";position:absolute;left:-12%;top:0;width:700px;height:560px;background:radial-gradient(closest-side,rgba(255,106,0,.24),transparent);filter:blur(28px);pointer-events:none;z-index:0}
+.hero::before{content:"";position:absolute;left:-12%;top:0;width:700px;height:560px;background:radial-gradient(closest-side,rgba(252,236,101,.24),transparent);filter:blur(28px);pointer-events:none;z-index:0}
 .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.12fr .88fr;align-items:center;gap:clamp(2rem,5vw,4rem)}
 .hi{color:var(--muted);font-size:1.05rem}
 .hero-copy{container-type:inline-size;min-width:0}
 .name{font:600 clamp(1.5rem,4.4vw,3.2rem)/1.1 var(--serif);font-size:clamp(1.4rem,8.8cqw,3.8rem);letter-spacing:-.03em;white-space:nowrap;margin:.35rem 0 .6rem}
 .role{color:var(--muted);font-weight:600;margin-bottom:1.6rem}
-.expert{display:flex;align-items:baseline;gap:.4em;font:700 clamp(1.15rem,2.4vw,1.75rem)/1.35 var(--sans)}
-.expert-lead{flex:none;color:var(--text)}
-.rotator{min-width:0;color:var(--accent)}
-.rotator .skill{display:block;margin-bottom:.3rem}
-.js .rotator{display:grid}
-.js .rotator .skill{grid-area:1/1;margin:0;opacity:0;transition:opacity .6s ease}
-.js .rotator .skill.on{opacity:1}
-.js .rotator.static{display:block}
-.js .rotator.static .skill{opacity:1;margin-bottom:.35rem}
-.socials{display:flex;gap:.7rem;margin:1.6rem 0}
-.socials a{display:grid;place-items:center;width:42px;height:42px;border:1px solid var(--line);border-radius:50%;background:var(--panel);color:var(--muted);transition:color .2s,border-color .2s}
-.socials a:hover{color:var(--accent);border-color:var(--accent)}
+.intro{color:#cfcfd2;max-width:60ch;margin-bottom:1.6rem}
 .cta-row{display:flex;flex-wrap:wrap;gap:.9rem}
 .stats{display:flex;max-width:520px;margin-top:2.2rem;padding:1.1rem 0;background:var(--panel);border:1px solid var(--line);border-radius:var(--r-md)}
 .stat{flex:1;padding:0 1.3rem;border-left:1px solid var(--line)}
@@ -123,7 +112,7 @@ ul{list-style:none;padding:0}
 .stat b{display:block;font:700 1.5rem/1.15 var(--serif);color:var(--accent)}
 .stat span{font-size:.84rem;color:var(--muted);line-height:1.3;display:block}
 .portrait-wrap{position:relative;width:min(100%,440px);margin-inline:auto}
-.hero-grid::before{content:"";position:absolute;inset:-16px;border-radius:24px;border:1px solid rgba(255,106,0,.35);pointer-events:none}
+.hero-grid::before{content:"";position:absolute;inset:-16px;border-radius:24px;border:1px solid rgba(252,236,101,.35);pointer-events:none}
 .portrait{position:relative;aspect-ratio:3/4;border-radius:20px;overflow:hidden;background:radial-gradient(circle at 50% 30%,#202022,#0d0d0e 72%);display:grid;place-items:end center}
 .portrait img{width:100%;height:100%;object-fit:cover;object-position:center top;filter:grayscale(1) contrast(1.05)}
 .silhouette{width:74%;fill:#262629}
@@ -136,7 +125,7 @@ ul{list-style:none;padding:0}
 .lead{color:var(--muted);max-width:56ch;margin-top:.9rem;margin-inline:auto;text-align:center}
 .panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--r-lg);padding:clamp(1.5rem,3vw,2.25rem)}
 .section-alt .panel{background:var(--bg)}
-.section-alt .svc-main{background:linear-gradient(180deg,rgba(255,106,0,.09),transparent 45%),var(--bg)}
+.section-alt .svc-main{background:linear-gradient(180deg,rgba(252,236,101,.09),transparent 45%),var(--bg)}
 .section-alt .pills li{background:var(--bg)}
 .section-alt .q{background:var(--bg)}
 .section:not(.section-alt) .work{background:var(--panel)}
@@ -145,24 +134,26 @@ ul{list-style:none;padding:0}
 .ticks li::before{content:"";position:absolute;left:0;top:.72em;width:.8rem;height:2px;background:var(--accent)}
 
 /* À propos */
-.about{display:grid;grid-template-columns:1fr 260px;gap:clamp(2rem,5vw,3.5rem);align-items:start;margin-top:2rem}
-.about-text{order:1}
+.about{display:grid;grid-template-columns:260px 1fr;gap:clamp(2rem,5vw,3.5rem);align-items:start;margin-top:2rem}
+.about-photo{order:1;position:sticky;top:100px}
+.about-photo .frame{position:relative;aspect-ratio:3/4;border-radius:var(--r-lg);overflow:hidden;background:radial-gradient(circle at 50% 30%,#202022,#0d0d0e 72%);display:grid;place-items:end center}
+.about-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;filter:grayscale(1) contrast(1.05)}
+.about-photo .silhouette-sm{width:74%;fill:#262629}
+.about-text{order:2}
 .about-text p+p{margin-top:1.1rem}
 .about-text p{color:#cfcfd2}
-.values{order:2}
-.values{display:grid;gap:1.3rem;text-align:center;padding:1.5rem;background:var(--bg);border:1px solid var(--line);border-radius:var(--r-lg)}
-.values dt{font-weight:700;color:var(--accent)}
-.values dd{margin:.15rem 0 0;color:var(--muted);font-size:.95rem}
+.svc-tagline{text-align:center;color:var(--muted);font-weight:600;font-size:.92rem;max-width:920px;margin:0 auto clamp(2rem,4vw,2.75rem);line-height:2}
+.svc-tagline .sep{color:var(--accent);margin:0 .6rem;font-weight:700}
 /* Services */
 .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
-.svc-main{background:linear-gradient(180deg,rgba(255,106,0,.09),transparent 45%),var(--panel);border-color:rgba(255,106,0,.4)}
+.svc-main{background:linear-gradient(180deg,rgba(252,236,101,.09),transparent 45%),var(--panel);border-color:rgba(252,236,101,.4)}
 .svc-icon{display:grid;place-items:center;width:50px;height:50px;border-radius:var(--r-md);background:var(--accent-soft);color:var(--accent);margin-bottom:1.3rem}
 .svc-icon .ic{width:26px;height:26px}
 .panel h3{font:600 1.3rem/1.25 var(--serif);margin-bottom:.6rem}
 .panel .sub{color:var(--muted);margin-bottom:1.3rem;max-width:52ch}
 
 /* Expériences */
-.timeline{margin-left:210px}
+.timeline{margin:0 auto;max-width:680px;padding-left:210px;box-sizing:border-box}
 .job{position:relative;padding:0 0 2.9rem 2.25rem;border-left:1px solid #34343a}
 .job:last-child{padding-bottom:0}
 .job::before{content:"";position:absolute;left:-6px;top:.55rem;width:11px;height:11px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 5px var(--accent-soft)}
@@ -177,16 +168,16 @@ ul{list-style:none;padding:0}
 .chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
 .works{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
 .work{display:flex;flex-direction:column;background:var(--bg);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;transition:border-color .25s}
-.work:hover{border-color:rgba(255,106,0,.5)}
+.work:hover{border-color:rgba(252,236,101,.5)}
 .work-art{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--bg)}
 .work-preview{width:100%;height:100%;border:0;display:block;pointer-events:none}
 .work-preview-img{width:100%;height:100%;object-fit:cover;display:block}
 .work-art-link{position:absolute;inset:0;z-index:1;cursor:pointer}
 .work-art-fallback{width:100%;height:100%;display:grid;place-items:center;color:var(--accent)}
 .work-art-fallback .ic{width:54px;height:54px;opacity:.9}
-.art-ao{background:radial-gradient(circle at 15% 100%,rgba(255,106,0,.35),transparent 55%),linear-gradient(#151516,#0b0b0c)}
-.art-jur{background:radial-gradient(circle at 90% 0,rgba(255,106,0,.3),transparent 55%),repeating-linear-gradient(135deg,#131314 0 12px,#0e0e0f 12px 24px)}
-.art-mkt{background:radial-gradient(circle at 50% 120%,rgba(255,106,0,.4),transparent 60%),radial-gradient(#1f1f21 1px,transparent 1px) 0 0/16px 16px,#0c0c0d}
+.art-ao{background:radial-gradient(circle at 15% 100%,rgba(252,236,101,.35),transparent 55%),linear-gradient(#151516,#0b0b0c)}
+.art-jur{background:radial-gradient(circle at 90% 0,rgba(252,236,101,.3),transparent 55%),repeating-linear-gradient(135deg,#131314 0 12px,#0e0e0f 12px 24px)}
+.art-mkt{background:radial-gradient(circle at 50% 120%,rgba(252,236,101,.4),transparent 60%),radial-gradient(#1f1f21 1px,transparent 1px) 0 0/16px 16px,#0c0c0d}
 .work-info{padding:1.3rem 1.4rem 1.5rem;display:flex;flex-direction:column;gap:.5rem;flex:1}
 .work h3{font:600 1.05rem/1.35 var(--serif)}
 .work p{color:var(--muted);font-size:.93rem}
@@ -196,7 +187,7 @@ ul{list-style:none;padding:0}
 .work-pdf .ic{width:16px;height:16px}
 .work-pdf:hover{text-decoration:underline}
 
-/* Témoignages : 3 par ligne sur ordinateur, le reste défile */
+/* Témoignages : défilement continu, animé */
 .quotes{--gap:1.25rem}
 .q-track{display:flex;align-items:flex-start;gap:var(--gap);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:2px}
 .q-track::-webkit-scrollbar{display:none}
@@ -233,19 +224,27 @@ ul{list-style:none;padding:0}
 .form-note{min-height:1.5em;color:var(--muted);font-size:.9rem}
 
 /* Pied de page */
-.foot{padding:2rem 0 6rem;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
-.foot .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.5rem 2rem}
+.foot{padding:2.5rem 0 6rem;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
+.foot .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.25rem 2rem}
+.foot-copy{display:flex;flex-wrap:wrap;gap:.5rem 1.5rem}
+.foot .socials{margin:0}
+.foot .socials a{width:38px;height:38px}
+
+/* Réseaux sociaux (réutilisé en pied de page) */
+.socials{display:flex;gap:.7rem;margin:1.6rem 0}
+.socials a{display:grid;place-items:center;width:42px;height:42px;border:1px solid var(--line);border-radius:50%;background:var(--panel);color:var(--muted);transition:color .2s,border-color .2s}
+.socials a:hover{color:var(--accent);border-color:var(--accent)}
 
 /* Bouton WhatsApp flottant */
-.wa{position:fixed;right:max(1.25rem,env(safe-area-inset-right));bottom:max(1.25rem,env(safe-area-inset-bottom));z-index:60;display:grid;place-items:center;width:60px;height:60px;border-radius:50%;background:var(--accent);color:var(--on-accent);box-shadow:0 10px 30px rgba(255,106,0,.38);transition:transform .2s,background .2s}
-.wa:hover{transform:scale(1.07);background:#ff8226}
+.wa{position:fixed;right:max(1.25rem,env(safe-area-inset-right));bottom:max(1.25rem,env(safe-area-inset-bottom));z-index:60;display:grid;place-items:center;width:60px;height:60px;border-radius:50%;background:var(--accent);color:var(--on-accent);box-shadow:0 10px 30px rgba(252,236,101,.38);transition:transform .2s,filter .2s}
+.wa:hover{transform:scale(1.07);filter:brightness(1.12)}
 .wa svg{width:31px;height:31px}
 .wa-tip{position:absolute;right:calc(100% + .8rem);white-space:nowrap;padding:.5rem .85rem;border-radius:var(--r-sm);background:var(--panel-2);border:1px solid var(--line);color:var(--text);font-size:.85rem;font-weight:600;opacity:0;pointer-events:none;transition:opacity .2s}
 .wa:hover .wa-tip,.wa:focus-visible .wa-tip{opacity:1}
 @media (hover:none){.wa-tip{display:none}}
 
 /* ---------- Textes justifiés ---------- */
-.about-text p,.panel .sub,.ticks li,.values dd,.work p,.q p{text-align:justify;text-justify:inter-word;hyphens:auto;-webkit-hyphens:auto}
+.about-text p,.panel .sub,.ticks li,.work p,.q p{text-align:justify;text-justify:inter-word;hyphens:auto;-webkit-hyphens:auto}
 /* ---------- Responsive ---------- */
 @media (max-width:1060px){
   .burger{display:grid}
@@ -259,11 +258,12 @@ ul{list-style:none;padding:0}
 @media (max-width:900px){
   .hero-grid,.contact,.svc-grid{grid-template-columns:1fr}
   .about{grid-template-columns:1fr}
+  .about-photo{position:static;max-width:260px;margin-inline:auto}
   .svc-main{grid-row:auto}
   .portrait-wrap{width:min(78%,360px)}
   .works{grid-template-columns:repeat(2,1fr)}
   .q{flex-basis:calc((100% - var(--gap)) / 2)}
-  .timeline{margin-left:.5rem}
+  .timeline{padding-left:.5rem;max-width:100%}
   .job-date{position:static;width:auto;text-align:left;margin-bottom:.35rem}
 }
 @media (max-width:600px){
@@ -273,6 +273,7 @@ ul{list-style:none;padding:0}
   .stat{flex:1 1 40%;padding:0 1rem}
   .stat:nth-child(3){border-left:0}
   .cta-row .btn{flex:1 1 100%}
+  .foot .wrap{justify-content:center;text-align:center}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -305,12 +306,12 @@ ul{list-style:none;padding:0}
     <button class="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
     <ul class="menu" id="menu">
       <li><a href="#accueil">Accueil</a></li>
-      <li><a href="#apropos">À propos</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#experiences">Expériences</a></li>
       <li><a href="#realisations">Réalisations</a></li>
       <li><a href="#temoignages">Témoignages</a></li>
       <li><a href="#contact">Contact</a></li>
+      <li><a href="apropos.html">À propos</a></li>
       <li class="menu-cta"><a class="btn btn-primary" href="#contact">Me contacter</a></li>
     </ul>
     <a class="btn btn-primary btn-sm nav-cta" href="#contact">Me contacter</a>
@@ -327,25 +328,7 @@ ul{list-style:none;padding:0}
       <h1 class="name">Nourou-Deen DABINA</h1>
       <p class="role">Fondateur de DND E-service</p>
 
-      <!-- Ligne animée : « Expert en » reste fixe, une seule spécialité à l'écran, chacune remplace la précédente toutes les 2 secondes (voir script en bas) -->
-      <p class="expert">
-        <span class="expert-lead">Expert en</span>
-        <span class="rotator">
-          <span class="skill">gestion des appels d'offres</span>
-          <span class="skill">marketing digital</span>
-          <span class="skill">accompagnement des structures de formation</span>
-          <span class="skill">assistance administrative et juridique</span>
-          <span class="skill">support commercial</span>
-          <span class="skill">conformité et audit</span>
-        </span>
-      </p>
-
-      <ul class="socials" aria-label="Réseaux et contacts">
-        <li><a data-linkedin href="https://www.linkedin.com/in/nourou-deen-dabina/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="ic ic-f"><use href="#i-in"/></svg></a></li>
-        <li><a data-comeup href="https://comeup.com/fr/@dnd-expjuriste" target="_blank" rel="noopener" aria-label="Profil Comeup"><svg class="ic ic-s"><use href="#i-comeup"/></svg></a></li>
-        <li><a data-mail href="mailto:nouroudeendabina26@gmail.com" aria-label="Écrire par e-mail"><svg class="ic ic-s"><use href="#i-mail"/></svg></a></li>
-        <li><a data-wa href="https://wa.me/+33746310435" target="_blank" rel="noopener" aria-label="WhatsApp"><svg class="ic ic-f"><use href="#i-wa"/></svg></a></li>
-      </ul>
+      <p class="intro">Bonjour, je suis Nourou-Deen DABINA, juriste freelance, expert en gestion d'appels d'offres et consultant en marketing digital. J'aide les entreprises à remporter des marchés publics, structurer leurs organismes de formation et développer leur visibilité en ligne.</p>
 
       <div class="cta-row">
         <a class="btn btn-primary" href="#contact">Me contacter</a>
@@ -369,27 +352,10 @@ ul{list-style:none;padding:0}
   </div>
 </section>
 
-<!-- ===================== À PROPOS ===================== -->
-<section class="section section-alt" id="apropos">
-  <div class="wrap">
-    <h2 class="h2">À propos</h2>
-    <div class="about">
-      <div class="about-text">
-        <p>Je suis Nourou-Deen DABINA, professionnel confirmé en appels d'offres publics et privés, assistance administrative et juridique, support commercial ainsi qu'en marketing digital 360° et projets web. Depuis plusieurs années, j'accompagne PME, TPE et structures publiques/privées dans la réponse aux marchés, la mise en conformité de leurs dossiers, et la valorisation de leur image en ligne.</p>
-        <p>J'ai choisi de mettre cette expertise au service des acteurs économiques locaux et des organisations en pleine croissance. Mon approche combine rigueur administrative, connaissance approfondie des procédures de marchés publics et maîtrise des outils digitaux modernes.</p>
-        <p>Ma mission est de vous permettre de vous concentrer sur votre cœur de métier pendant que je prends en charge la complexité administrative et la structuration de vos dossiers stratégiques. Que vous soyez une entreprise établie cherchant à développer son activité via les marchés publics ou une structure en création nécessitant un accompagnement juridique et digital, je mets mon expérience à votre service pour sécuriser vos démarches et maximiser vos chances de succès.</p>
-      </div>
-      <dl class="values">
-        <div><dt>Rigueur</dt><dd>Chaque pièce d'un dossier est vérifiée avant le dépôt.</dd></div>
-        <div><dt>Clarté</dt><dd>Les aspects juridiques sont expliqués simplement, sans jargon.</dd></div>
-        <div><dt>Confidentialité</dt><dd>Vos documents et vos informations restent entre nous.</dd></div>
-      </dl>
-    </div>
-  </div>
-</section>
 <!-- ===================== SERVICES ===================== -->
 <section class="section" id="services">
   <div class="wrap">
+    <p class="svc-tagline">Juriste Freelance <span class="sep">|</span> Gestion d'Appel d'Offres - Marchés Publics <span class="sep">|</span> Marketing Numérique : Copywriting - SEO - Graphisme - CM <span class="sep">|</span> OF/Qualiopi/EDOF/NDA/CPF/OPCO/CertifPro <span class="sep">|</span> Admin <span class="sep">|</span> VAE/Thèse/Mémoire <span class="sep">|</span> Conformité AUDIT CDC</p>
     <div class="head">
       <h2 class="h2">Services</h2>
       <p class="lead">Trois domaines d'intervention, un seul interlocuteur pour vos dossiers.</p>
@@ -443,7 +409,7 @@ ul{list-style:none;padding:0}
     <div class="timeline">
       <article class="job">
         <p class="job-date">Février 2021 à aujourd'hui</p>
-        <h3>Responsable Projets Digitaux & Appels d’Offres </h3>
+        <h3>Responsable Projets Digitaux & Appels d'Offres </h3>
         <p class="where">DND E-service</p>
         <ul class="ticks">
           <li>Plus de 350 missions pour 300+ entreprises,</li>
@@ -464,7 +430,7 @@ ul{list-style:none;padding:0}
       </article>
       <article class="job">
         <p class="job-date">Janvier 2025 – Mars 2025 | Cotonou, Bénin</p>
-        <h3>Gestionnaire Appels d’Offres</h3>
+        <h3>Gestionnaire Appels d'Offres</h3>
         <p class="where"> VIPP Interstis</p>
         <ul class="ticks">
           <li>Traitement intensif de plus de 40 dossiers d'appels d'offres en 8 semaines pour ADX Groupe France, avec un taux de complétion supérieur à 95 %</li>
@@ -540,15 +506,15 @@ ul{list-style:none;padding:0}
     <div class="quotes">
       <div class="q-track" id="qTrack" tabindex="0" aria-label="Témoignages de clients, faites défiler horizontalement">
         <figure class="q">
-          <blockquote><p>Je recommande vivement Nourou pour son accompagnement exceptionnel. Il a soutenu WA Africa dans l’ensemble de ses processus juridiques et contractuels avec une grande réactivité, une rapidité d’exécution remarquable et une expertise précieuse. Toujours disponible, il a su apporter des conseils avisés et adaptés à chaque situation, ce qui a permis d’avancer efficacement et en toute confiance. Un partenaire de confiance que je recommande sans hésitation.</p></blockquote>
+          <blockquote><p>Je recommande vivement Nourou pour son accompagnement exceptionnel. Il a soutenu WA Africa dans l'ensemble de ses processus juridiques et contractuels avec une grande réactivité, une rapidité d'exécution remarquable et une expertise précieuse. Toujours disponible, il a su apporter des conseils avisés et adaptés à chaque situation, ce qui a permis d'avancer efficacement et en toute confiance. Un partenaire de confiance que je recommande sans hésitation.</p></blockquote>
           <figcaption><span class="avatar" aria-hidden="true">SP</span><span><strong>Salviane H. Pernelle</strong><span>WA Africa</span></span></figcaption>
         </figure>
         <figure class="q">
-          <blockquote><p>Je recommande Nourou-Deen avec plaisir, car je travaille actuellement avec lui. Il est à la fois efficace et réactif. Nous avons collaboré sur plusieurs sujets : suivi comptable, gestion des ressources humaines, déclarations fiscales, bilans des sociétés, réponses aux appels d’offres, etc. Il apporte une vraie valeur ajoutée à l’entreprise. Vous pouvez lui faire confiance, il fera la différence.</p></blockquote>
+          <blockquote><p>Je recommande Nourou-Deen avec plaisir, car je travaille actuellement avec lui. Il est à la fois efficace et réactif. Nous avons collaboré sur plusieurs sujets : suivi comptable, gestion des ressources humaines, déclarations fiscales, bilans des sociétés, réponses aux appels d'offres, etc. Il apporte une vraie valeur ajoutée à l'entreprise. Vous pouvez lui faire confiance, il fera la différence.</p></blockquote>
           <figcaption><span class="avatar" aria-hidden="true">EA</span><span><strong>Elom AMENUDZIE</strong><span>  </span></span></figcaption>
         </figure>
         <figure class="q">
-          <blockquote><p>J’ai fait appel à ce prestataire pour la constitution et la soumission de dossiers de candidature aux appels d’offres publics pour mon entreprise de sécurité, et je suis plus que satisfait de son travail. Il a su gérer l’ensemble du processus avec professionnalisme, rigueur et une grande réactivité. Grâce à son expertise, il a monté des dossiers complets et conformes aux exigences administratives, un travail que je peinais à faire moi-même. Son sérieux, son efficacité et son souci du détail m'ont grandement facilité la tâche. Je recommande vivement ses services à toute entreprise souhaitant optimiser ses chances dans les marchés publics. Un vrai professionnel sur qui on peut compter !</p></blockquote>
+          <blockquote><p>J'ai fait appel à ce prestataire pour la constitution et la soumission de dossiers de candidature aux appels d'offres publics pour mon entreprise de sécurité, et je suis plus que satisfait de son travail. Il a su gérer l'ensemble du processus avec professionnalisme, rigueur et une grande réactivité. Grâce à son expertise, il a monté des dossiers complets et conformes aux exigences administratives, un travail que je peinais à faire moi-même. Son sérieux, son efficacité et son souci du détail m'ont grandement facilité la tâche. Je recommande vivement ses services à toute entreprise souhaitant optimiser ses chances dans les marchés publics. Un vrai professionnel sur qui on peut compter !</p></blockquote>
           <figcaption><span class="avatar" aria-hidden="true">GS</span><span><strong>GALAXY SECURITY</strong><span>Responsable administratif</span></span></figcaption>
         </figure>
         <figure class="q">
@@ -557,10 +523,10 @@ ul{list-style:none;padding:0}
         </figure>
         <figure class="q">
           <blockquote><p>Réactif, précis et toujours disponible. Nous avons gagné un temps considérable sur nos réponses aux consultations.</p></blockquote>
-          <figcaption><span class="avatar" aria-hidden="true">PN</span><span><strong></strong><span>Responsable administratif</span></span></figcaption>
+          <figcaption><span class="avatar" aria-hidden="true">PN</span><span><strong>Client PN</strong><span>Responsable administratif</span></span></figcaption>
         </figure>
         <figure class="q">
-          <blockquote><p>“Bonjour, Cela fait un moment que je fais appel à ses services, même si des ajustements de planning ont régulièrement décalé nos collaborations.
+          <blockquote><p>"Bonjour, Cela fait un moment que je fais appel à ses services, même si des ajustements de planning ont régulièrement décalé nos collaborations.
             Pour mes travaux juridiques, j'avais la conviction qu'il était le bon interlocuteur — et j'ai tout de même pris le temps de comparer avec d'autres prestataires avant de me décider.
             Le résultat est à la hauteur de mes attentes : mes documents juridiques obligatoires sont désormais complets et opérationnels. Une base solide pour démarrer sereinement, avec la protection nécessaire pour moi comme pour mes clients.
             Merci encore, et à très bientôt pour de nouveaux projets.</p></blockquote>
@@ -624,8 +590,16 @@ ul{list-style:none;padding:0}
 
 <footer class="foot">
   <div class="wrap">
-    <span>© <span id="year">2026</span> Nourou Deen DABINA</span>
-    <span>DND E-service</span>
+    <div class="foot-copy">
+      <span>© <span id="year">2026</span> Nourou Deen DABINA</span>
+      <span>DND E-service</span>
+    </div>
+    <ul class="socials" aria-label="Réseaux et contacts">
+      <li><a data-linkedin href="https://www.linkedin.com/in/nourou-deen-dabina/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="ic ic-f"><use href="#i-in"/></svg></a></li>
+      <li><a data-comeup href="https://comeup.com/fr/@dnd-expjuriste" target="_blank" rel="noopener" aria-label="Profil Comeup"><svg class="ic ic-s"><use href="#i-comeup"/></svg></a></li>
+      <li><a data-mail href="mailto:nouroudeendabina26@gmail.com" aria-label="Écrire par e-mail"><svg class="ic ic-s"><use href="#i-mail"/></svg></a></li>
+      <li><a data-wa href="https://wa.me/+33746310435" target="_blank" rel="noopener" aria-label="WhatsApp"><svg class="ic ic-f"><use href="#i-wa"/></svg></a></li>
+    </ul>
   </div>
 </footer>
 
@@ -670,27 +644,14 @@ const CONFIG = {
   $$("[data-location-text]").forEach(e => e.textContent = CONFIG.location);
   $("#year").textContent = new Date().getFullYear();
 
-  /* Photo */
+  /* Photo (hero + à propos) */
   if (CONFIG.photo) {
-    const img = $("#photo");
-    img.src = CONFIG.photo;
-    img.onload = () => { img.hidden = false; $("#silhouette").style.display = "none"; };
-  }
-
-  /* Ligne animée : une compétence à la fois, chacune remplace la précédente */
-  const skills = $$(".skill");
-  const rotator = $(".rotator");
-  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (reduce) {
-    rotator.classList.add("static");
-  } else {
-    let i = 0;
-    const show = () => {
-      skills.forEach((s, k) => s.classList.toggle("on", k === i));
-      i = (i + 1) % skills.length;
-    };
-    show();
-    setInterval(show, 2000);
+    [["#photo", "#silhouette"], ["#photoAbout", "#silhouetteAbout"]].forEach(([imgSel, silSel]) => {
+      const img = $(imgSel);
+      if (!img) return;
+      img.src = CONFIG.photo;
+      img.onload = () => { img.hidden = false; const s = $(silSel); if (s) s.style.display = "none"; };
+    });
   }
 
   /* En-tête : fond au défilement */
@@ -731,7 +692,9 @@ const CONFIG = {
     works.forEach(w => w.hidden = !(f === "all" || w.dataset.cat === f));
   }));
 
-    /* Témoignages : 3 par ligne sur ordinateur, le reste défile */
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* Témoignages : 3 par ligne sur ordinateur, le reste défile, avec lecture automatique */
   const track = $("#qTrack"), count = $("#qCount"), qNav = $("#qNav");
   const cards = $$(".q", track);
 
@@ -755,7 +718,7 @@ const CONFIG = {
     checkOverflow();
     addEventListener("resize", checkOverflow);
   });
-/*TEMOIGNAGE */
+
   const stepW = () => cards.length > 1 ? cards[1].offsetLeft - cards[0].offsetLeft : cards[0].offsetWidth;
   const gapW = () => stepW() - cards[0].offsetWidth;
   const perView = () => Math.max(1, Math.floor((track.clientWidth + gapW() + 4) / stepW()));
@@ -773,11 +736,28 @@ const CONFIG = {
     if (n < 0) n = maxFirst;
     track.scrollTo({ left: n * stepW(), behavior: reduce ? "auto" : "smooth" });
   };
-  $("#qPrev").addEventListener("click", () => goQ(-1));
-  $("#qNext").addEventListener("click", () => goQ(1));
+  $("#qPrev").addEventListener("click", () => { goQ(-1); restartAuto(); });
+  $("#qNext").addEventListener("click", () => { goQ(1); restartAuto(); });
   track.addEventListener("scroll", updateQ, { passive: true });
   addEventListener("resize", updateQ);
   updateQ();
+
+  /* Défilement automatique du carrousel de témoignages */
+  let autoTimer = null;
+  const AUTO_DELAY = 4000;
+  const startAuto = () => {
+    if (reduce || cards.length <= perView()) return;
+    stopAuto();
+    autoTimer = setInterval(() => goQ(1), AUTO_DELAY);
+  };
+  const stopAuto = () => { if (autoTimer) { clearInterval(autoTimer); autoTimer = null; } };
+  const restartAuto = () => { stopAuto(); startAuto(); };
+  track.addEventListener("mouseenter", stopAuto);
+  track.addEventListener("mouseleave", startAuto);
+  track.addEventListener("focusin", stopAuto);
+  track.addEventListener("focusout", startAuto);
+  startAuto();
+
   /* Formulaire : le message s'ouvre dans WhatsApp */
   const form = $("#form"), note = $("#formNote");
   form.addEventListener("submit", e => {
