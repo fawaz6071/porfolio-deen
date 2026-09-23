@@ -230,15 +230,17 @@ ul{list-style:none;padding:0}
 
 /* Contact */
 .contact{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(2rem,6vw,5rem);align-items:start}
+.contact>*{min-width:0}
 .contact-list{display:grid;gap:.85rem;margin-top:2rem}
 .contact-list a{display:flex;align-items:center;gap:1rem;padding:1rem 1.15rem;border:1px solid var(--line);border-radius:var(--r-md);background:var(--panel);transition:border-color .2s}
 .contact-list a:hover{border-color:var(--accent)}
 .contact-list .ci{display:grid;place-items:center;flex:none;width:42px;height:42px;border-radius:50%;background:var(--accent-soft);color:var(--accent)}
+.contact-list a>span{min-width:0}
 .contact-list b{display:block;line-height:1.3}
-.contact-list small{color:var(--muted);font-size:.88rem}
+.contact-list small{color:var(--muted);font-size:.88rem;overflow-wrap:anywhere;word-break:break-word}
 .form{display:grid;gap:1.15rem}
-.field{display:grid;gap:.4rem;font-weight:600;font-size:.92rem}
-.field input,.field select,.field textarea{width:100%;padding:.85rem 1rem;border:1px solid #333338;border-radius:10px;background:#050505;color:var(--text);font:400 1rem var(--sans)}
+.field{display:grid;gap:.4rem;font-weight:600;font-size:.92rem;min-width:0}
+.field input,.field select,.field textarea{width:100%;min-width:0;padding:.85rem 1rem;border:1px solid #333338;border-radius:10px;background:#050505;color:var(--text);font:400 1rem var(--sans)}
 .field textarea{resize:vertical;min-height:130px}
 .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
 .form-note{min-height:1.5em;color:var(--muted);font-size:.9rem}
@@ -277,15 +279,44 @@ ul{list-style:none;padding:0}
 }
 @media (max-width:900px){
   .hero-grid,.contact,.svc-grid{grid-template-columns:1fr}
+  .hero-grid::before{display:none}
+  .portrait-wrap{order:-1;width:min(78%,360px)}
   .about{grid-template-columns:1fr}
   .about-photo{position:static;max-width:260px;margin-inline:auto}
-  .portrait-wrap{width:min(78%,360px)}
   .works{grid-template-columns:repeat(2,1fr)}
   .q{flex-basis:calc((100% - var(--gap)) / 2)}
   .timeline{padding-left:.5rem;max-width:100%}
   .job-date{position:static;width:auto;text-align:left;margin-bottom:.35rem}
 }
 @media (max-width:600px){
+  /* Tailles de police ramenées à une échelle "normale" sur mobile */
+  .hi{font-size:.9rem}
+  .name{font-size:1.7rem!important}
+  .role{font-size:.92rem}
+  .intro{font-size:.92rem}
+  .stat b{font-size:1.15rem}
+  .stat span{font-size:.76rem}
+  .btn{font-size:.85rem;min-height:44px}
+  .h2{font-size:1.4rem}
+  .lead{font-size:.9rem}
+  .svc-tagline-item{font-size:.8rem}
+  .svc-card h3{font-size:1.1rem}
+  .svc-desc{font-size:.9rem}
+  .job h3{font-size:1.05rem}
+  .job-date{font-size:.82rem}
+  .job .where{font-size:.85rem}
+  .ticks li{font-size:.9rem}
+  .work h3{font-size:.95rem}
+  .work p{font-size:.85rem}
+  .tag,.work-pdf{font-size:.75rem}
+  .q p{font-size:.9rem}
+  .q figcaption strong{font-size:.9rem}
+  .q figcaption span span{font-size:.8rem}
+  .contact-list b{font-size:.92rem}
+  .contact-list small{font-size:.8rem}
+  .field{font-size:.85rem}
+  .field input,.field select,.field textarea{font-size:16px}
+  .foot{font-size:.8rem}
   .works{grid-template-columns:1fr}
   .q{flex-basis:100%}
   .stats{flex-wrap:wrap;row-gap:1rem}
@@ -345,7 +376,9 @@ ul{list-style:none;padding:0}
     <div class="hero-copy">
       <p class="hi">Bonjour, je suis</p>
       <h1 class="name">Nourou-Deen DABINA</h1>
-      <p class="intro">Fondateur de DND E-service, juriste freelance, expert en gestion d'appels d'offres et consultant en marketing digital. J'aide les entreprises à remporter des marchés publics, structurer leurs organismes de formation et développer leur visibilité en ligne.</p>
+      <p class="role">Fondateur de DND E-service</p>
+
+      <p class="intro">Bonjour, je suis Nourou-Deen DABINA, juriste freelance, expert en gestion d'appels d'offres et consultant en marketing digital. J'aide les entreprises à remporter des marchés publics, structurer leurs organismes de formation et développer leur visibilité en ligne.</p>
 
       <div class="cta-row">
         <a class="btn btn-primary" href="#contact">Me contacter</a>
@@ -454,6 +487,7 @@ ul{list-style:none;padding:0}
       </article> 
     </div>
   </div>
+  <p> Consultez mon cv plus de details</p>
 </section>
 
 <!-- ===================== RÉALISATIONS (EXEMPLES à remplacer) ===================== -->
