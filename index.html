@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Nourou Deen DABINA, appels d'offres, juridique et marketing numérique | DND E-service</title>
-<meta name="description" content="Nourou Deen DABINA, fondateur de DND E-service : appels d'offres et marchés publics, assistance administrative et juridique, marketing numérique, conformité et audit.">
+<title>Nourou Deen DABINA, appels d'offres, juridique et marketing numérique | DND E-services</title>
+<meta name="description" content="Nourou Deen DABINA, fondateur de DND E-services : appels d'offres et marchés publics, assistance administrative et juridique, marketing numérique, conformité et audit.">
 <meta name="theme-color" content="#000000">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23000'/%3E%3Ctext x='32' y='44' font-size='34' font-family='Georgia,serif' font-weight='700' text-anchor='middle' fill='%23ff6a00'%3ED%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -158,13 +158,24 @@ ul{list-style:none;padding:0}
 .svc-card h3{font:600 1.3rem/1.25 var(--serif);margin-bottom:.75rem}
 .svc-desc{color:var(--muted)}
 
-.timeline{margin:0 auto;max-width:680px;padding-left:210px;box-sizing:border-box}
-.job{position:relative;padding:0 0 2.9rem 2.25rem;border-left:1px solid #34343a}
-.job:last-child{padding-bottom:0}
-.job::before{content:"";position:absolute;left:-6px;top:.55rem;width:11px;height:11px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 5px var(--accent-soft)}
-.job-date{position:absolute;right:calc(100% + 1.75rem);top:.25rem;width:180px;text-align:right;color:var(--muted);font-weight:600;font-size:.92rem}
-.job h3{font:600 1.2rem/1.3 var(--serif)}
-.job .where{color:var(--accent);font-weight:600;font-size:.95rem;margin:.15rem 0 .8rem}
+.experience-grid{position:relative;display:grid;gap:1.1rem;margin-top:2.4rem;padding-left:2rem}
+.experience-grid::before{content:"";position:absolute;left:.48rem;top:.65rem;bottom:.65rem;width:1px;background:linear-gradient(to bottom,transparent,#3b3b42 5%,#3b3b42 95%,transparent)}
+.experience-card{position:relative;display:grid;grid-template-columns:minmax(250px,.78fr) minmax(0,1.55fr) auto;gap:1.5rem;align-items:center;padding:1.45rem 1.35rem 1.45rem 1.55rem;background:linear-gradient(135deg,rgba(255,255,255,.025),rgba(255,255,255,.008));border:1px solid var(--line);border-radius:var(--r-lg);opacity:.48;transform:translateX(-18px) scale(.985);transition:opacity .45s ease,transform .55s cubic-bezier(.22,1,.36,1),border-color .3s ease,background .3s ease,box-shadow .3s ease}
+.experience-card::before{content:"";position:absolute;left:-2.02rem;top:50%;width:.7rem;height:.7rem;border-radius:50%;background:#3b3b42;box-shadow:0 0 0 5px var(--bg),0 0 0 6px #3b3b42;transform:translateY(-50%);transition:background .35s ease,box-shadow .35s ease,transform .35s ease}
+.experience-card.is-visible{opacity:.82;transform:translateX(0) scale(1)}
+.experience-card.is-active{opacity:1;transform:translateX(10px) scale(1.012);border-color:rgba(252,236,101,.62);background:linear-gradient(135deg,rgba(252,236,101,.075),rgba(255,255,255,.012));box-shadow:0 18px 50px rgba(0,0,0,.18),0 0 0 1px rgba(252,236,101,.08)}
+.experience-card.is-active::before{background:var(--accent);box-shadow:0 0 0 5px var(--accent-soft),0 0 22px rgba(252,236,101,.5);transform:translateY(-50%) scale(1.15)}
+.experience-card:hover{transform:translateX(10px) scale(1.012);border-color:rgba(252,236,101,.62);background:linear-gradient(135deg,rgba(252,236,101,.075),rgba(255,255,255,.012))}
+.experience-main{min-width:0;padding-right:1.2rem;border-right:1px solid var(--line)}
+.experience-role{margin:0;font:700 clamp(1.05rem,1.5vw,1.3rem)/1.25 var(--serif);letter-spacing:-.01em}
+.experience-company{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;margin-top:.55rem;color:var(--accent);font-weight:700;font-size:.94rem}
+.experience-type{padding:.2rem .55rem;border:1px solid rgba(252,236,101,.45);border-radius:999px;color:var(--muted);font-size:.72rem;font-weight:700}
+.experience-summary{margin:0;color:var(--muted);font-size:.93rem;line-height:1.65}
+.experience-link{display:inline-flex;align-items:center;justify-content:center;min-width:120px;padding:.62rem .9rem;border:1px solid var(--accent);border-radius:999px;color:var(--accent);font:700 .78rem var(--sans);white-space:nowrap;transition:background .2s,color .2s,transform .2s}
+.experience-link:hover{background:var(--accent);color:var(--on-accent);transform:translateX(2px)}
+.experience-link.is-reference{border-color:var(--line);color:var(--muted)}
+.experience-link.is-reference:hover{border-color:var(--accent);color:var(--on-accent)}
+.experience-metric{display:inline-block;margin-bottom:.45rem;color:var(--accent);font-weight:800;font-size:1rem}
 
 .filters{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;margin-bottom:1.75rem}
 .chip{padding:.55rem 1.15rem;border:1px solid var(--line);border-radius:99px;background:transparent;color:var(--muted);font:600 .9rem var(--sans);cursor:pointer;transition:background .2s,color .2s,border-color .2s}
@@ -263,8 +274,11 @@ ul{list-style:none;padding:0}
   .about-photo{position:static;max-width:260px;margin-inline:auto}
   .works{grid-template-columns:repeat(2,1fr)}
   .q{width:300px}
-  .timeline{padding-left:.5rem;max-width:100%}
-  .job-date{position:static;width:auto;text-align:left;margin-bottom:.35rem}
+  .experience-grid{padding-left:1.35rem}
+  .experience-card{grid-template-columns:1fr;gap:.8rem;padding:1.25rem 1.15rem 1.25rem 1.2rem}
+  .experience-card::before{left:-1.68rem}
+  .experience-main{padding-right:0;border-right:0;padding-bottom:.75rem;border-bottom:1px solid var(--line)}
+  .experience-link{justify-self:start}
 }
 @media (max-width:600px){
   .hi{font-size:.9rem}
@@ -279,10 +293,10 @@ ul{list-style:none;padding:0}
   .svc-tagline-item{font-size:.8rem}
   .svc-card h3{font-size:1.1rem}
   .svc-desc{font-size:.9rem}
-  .job h3{font-size:1.05rem}
-  .job-date{font-size:.82rem}
-  .job .where{font-size:.85rem}
-  .ticks li{font-size:.9rem}
+  .experience-role{font-size:1.05rem}
+  .experience-company{font-size:.85rem}
+  .experience-summary{font-size:.88rem}
+  .experience-link{font-size:.75rem}
   .work h3{font-size:.95rem}
   .work p{font-size:.85rem}
   .tag,.work-pdf{font-size:.75rem}
@@ -306,6 +320,7 @@ ul{list-style:none;padding:0}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *{transition-duration:.01ms!important}
+  .experience-card,.experience-card.is-visible,.experience-card.is-active,.experience-card:hover{opacity:1;transform:none}
 }
 </style>
 </head>
@@ -329,7 +344,7 @@ ul{list-style:none;padding:0}
 
 <header class="site-header" id="haut">
   <div class="wrap nav">
-    <a class="logo" href="#accueil" aria-label="DND E-service, retour à l'accueil">DND <small>E-service</small></a>
+    <a class="logo" href="#accueil" aria-label="DND E-services, retour à l'accueil">DND <small>E-services</small></a>
     <button class="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
     <ul class="menu" id="menu">
       <li><a href="#accueil">Accueil</a></li>
@@ -352,7 +367,7 @@ ul{list-style:none;padding:0}
     <div class="hero-copy">
       <p class="hi">Bonjour, je suis</p>
       <h1 class="name">Nourou-Deen DABINA</h1>
-      <p class="intro">Fondateur de DND E-service, juriste freelance, expert en gestion d'appels d'offres et consultant en marketing digital. J'aide les entreprises à remporter des marchés publics, structurer leurs organismes de formation et développer leur visibilité en ligne.</p>
+      <p class="intro">Fondateur de DND E-services, juriste freelance, expert en gestion d'appels d'offres et consultant en marketing digital. J'aide les entreprises à remporter des marchés publics, structurer leurs organismes de formation et développer leur visibilité en ligne.</p>
 
       <div class="cta-row">
         <a class="btn btn-primary" href="#contact">Me contacter</a>
@@ -410,52 +425,82 @@ ul{list-style:none;padding:0}
 <section class="section section-alt" id="experiences">
   <div class="wrap">
     <div class="head">
-      <h2 class="h2">Expériences professionnelles</h2>
-      <p class="lead">Un parcours construit autour des dossiers, des contrats et de la relation client.</p>
+      <h2 class="h2">Expérience</h2>
+      <p class="lead">Un parcours à la croisée du SEO, du digital, des marchés publics et de la gestion de projets.</p>
     </div>
-    <div class="timeline">
-      <article class="job">
-        <p class="job-date">Février 2021 à aujourd'hui</p>
-        <h3>Responsable Projets Digitaux & Appels d'Offres </h3>
-        <p class="where">DND E-service</p>
-        <ul class="ticks">
-          <li>Plus de 350 missions pour 300+ entreprises,</li>
-          <li>Pilotage de plus de 200 projets digitaux</li>
-          <li>Produiction de plus de 3 000 contenus digitaux, menant à une croissance de +92 % du chiffre d'affaires</li>
-        </ul>
+
+    <div class="experience-grid">
+      <article class="experience-card">
+        <div class="experience-main">
+          <h3 class="experience-role">French Expert SEO &amp; Translation</h3>
+          <p class="experience-company">TransPerfect <span class="experience-type">Freelance</span></p>
+        </div>
+        <div>
+          <strong class="experience-metric">120+ projets</strong>
+          <p class="experience-summary">Traduction, SEO multilingue, recherche de mots-clés, rédaction SEO, revue de contenus (BCR) et gestion des métadonnées.</p>
+        </div>
+        <a class="experience-link" href="https://www.transperfect.com/" target="_blank" rel="noopener noreferrer">Visiter le site&nbsp;↗</a>
       </article>
-      <article class="job">
-        <p class="job-date">Août 2025 – Décembre 2025 | Parakou, Bénin</p>
-        <h3>Responsable Marketing & Commercial</h3>
-        <p class="where">KryptaPay BJ</p>
-        <ul class="ticks">
-          <li>Pilotage de la stratégie marketing et commerciale d'une fintech</li>
-          <li>Générant une croissance de +15 % du CA en 4 mois</li>
-          <li>J'ai structuré la force commerciale, développé des outils de communication</li>
-          <li>Suivi des KPI pour une optimisation continue.</li>
-        </ul>
+
+      <article class="experience-card">
+        <div class="experience-main">
+          <h3 class="experience-role">Gestion d’Appels d’Offres &amp; Marketing Digital</h3>
+          <p class="experience-company">Euro Market Digital <span class="experience-type">Indépendant</span></p>
+        </div>
+        <div>
+          <strong class="experience-metric">2 ans et 4 mois</strong>
+          <p class="experience-summary">Recherche et analyse de marchés publics, présélection et montage de dossiers, veille concurrentielle et préparation de candidatures fournisseurs.</p>
+        </div>
+        <a class="experience-link" href="https://euromarketdigital.net/" target="_blank" rel="noopener noreferrer">Visiter le site&nbsp;↗</a>
       </article>
-      <article class="job">
-        <p class="job-date">Janvier 2025 – Mars 2025 | Cotonou, Bénin</p>
-        <h3>Gestionnaire Appels d'Offres</h3>
-        <p class="where"> VIPP Interstis</p>
-        <ul class="ticks">
-          <li>Traitement intensif de plus de 40 dossiers d'appels d'offres en 8 semaines pour ADX Groupe France, avec un taux de complétion supérieur à 95 %</li>
-          <li>Analyse des DCE</li>
-          <li>Elaboration les pièces administratives et rédaction des réponses techniques complexes.</li>
-        </ul>
+
+      <article class="experience-card">
+        <div class="experience-main">
+          <h3 class="experience-role">French SEO Editor — Blogs FR</h3>
+          <p class="experience-company">Webcertain <span class="experience-type">Freelance</span></p>
+        </div>
+        <div>
+          <strong class="experience-metric">360+ articles</strong>
+          <p class="experience-summary">Rédaction et optimisation SEO, recherche de mots-clés, métadonnées et optimisation de contenus longs pour des marques internationales.</p>
+        </div>
+        <a class="experience-link" href="https://www.transperfectdigital.com/" target="_blank" rel="noopener noreferrer">Visiter le site&nbsp;↗</a>
       </article>
-     <article class="job">
-        <p class="job-date">Novembre 2019 – Février 2021 | Abomey-Calavi, Bénin</p>
-        <h3>Assistant Juridique</h3>
-        <p class="where">MATEC LTD</p>
-        <ul class="ticks">
-          <li>Assurance d'une assistance juridique opérationnelle</li>
-          <li> Rédaction de contrats commerciaux</li>
-          <li>suivi de dossiers de soumission pour marchés publics/privés.</li>
-          <li>la gestion du précontentieux et le support à la gestion immobilière.</li>
-        </ul>
-      </article> 
+
+      <article class="experience-card">
+        <div class="experience-main">
+          <h3 class="experience-role">Responsable Technique et Juridique</h3>
+          <p class="experience-company">AMT <span class="experience-type">Freelance</span></p>
+        </div>
+        <div>
+          <strong class="experience-metric">3 ans</strong>
+          <p class="experience-summary">Gestion technique et juridique, soumission aux marchés publics, contrats, assistance administrative, business plans, études de marché et stratégies SEO.</p>
+        </div>
+        <a class="experience-link" href="https://amt-france.com/" target="_blank" rel="noopener noreferrer">Visiter le site&nbsp;↗</a>
+      </article>
+
+      <article class="experience-card">
+        <div class="experience-main">
+          <h3 class="experience-role">Responsable Technique et Juridique (Marchés Publics)</h3>
+          <p class="experience-company">AMAZONIE TERRASSEMENT <span class="experience-type">Collaboration</span></p>
+        </div>
+        <div>
+          <strong class="experience-metric">3+ ans</strong>
+          <p class="experience-summary">Gestion d’appels d’offres, marketing digital, community management et assistance juridique et administrative.</p>
+        </div>
+        <span class="experience-link is-reference" aria-label="Lien vers le site non renseigné">Entreprise</span>
+      </article>
+
+      <article class="experience-card">
+        <div class="experience-main">
+          <h3 class="experience-role">Chargé des Marchés Publics</h3>
+          <p class="experience-company">DUMEZ CONSEILS <span class="experience-type">Freelance</span></p>
+        </div>
+        <div>
+          <strong class="experience-metric">4 mois</strong>
+          <p class="experience-summary">Veille stratégique, identification d’opportunités, analyse des cahiers des charges, montage des dossiers et suivi des procédures de passation.</p>
+        </div>
+        <a class="experience-link is-reference" href="https://www.francenum.gouv.fr/activateurs/dumez-conseils" target="_blank" rel="noopener noreferrer">Voir la fiche&nbsp;↗</a>
+      </article>
     </div>
   </div>
 </section>
@@ -474,16 +519,16 @@ ul{list-style:none;padding:0}
     </div>
     <div class="works">
       <article class="work" data-cat="ao">
-        <div class="work-art"><object class="work-preview" data="fichier/Memoire_technique_SM_CONSTRUCTION_P26-023.pdf#page=1&view=FitH&toolbar=0&navpanes=0" type="application/pdf"><div class="work-art-fallback art-ao"><svg class="ic ic-s"><use href="#i-file"/></svg></div></object><a class="work-art-link" href="realisations/dossier-marche-travaux.pdf" target="_blank" rel="noopener" aria-label="Ouvrir le PDF : Dossier de candidature, marché de travaux"></a></div>
-        <div class="work-info"><h3>Dossier de candidature, marché de travaux</h3><p>Description courte de la mission et du résultat obtenu.</p><div class="work-foot"><span class="tag">Appels d'offres</span><a class="work-pdf" href="realisations/dossier-marche-travaux.pdf" target="_blank" rel="noopener" aria-label="Voir le PDF"><svg class="ic ic-s"><use href="#i-file"/></svg></a></div></div>
+        <div class="work-art"><object class="work-preview" data="fichier/Memoire_technique_SM_CONSTRUCTION_P26-023.pdf#page=1&view=FitH&toolbar=0&navpanes=0" type="application/pdf"><div class="work-art-fallback art-ao"><svg class="ic ic-s"><use href="#i-file"/></svg></div></object><a class="work-art-link" href="fichier/Memoire_technique_SM_CONSTRUCTION_P26-023.pdf" target="_blank" rel="noopener" aria-label="Ouvrir le PDF : Dossier de candidature, marché de travaux"></a></div>
+        <div class="work-info"><h3>Dossier de candidature, marché de travaux</h3><p>Description courte de la mission et du résultat obtenu.</p><div class="work-foot"><span class="tag">Appels d'offres</span><a class="work-pdf" href="fichier/Memoire_technique_SM_CONSTRUCTION_P26-023.pdf" target="_blank" rel="noopener" aria-label="Voir le PDF"><svg class="ic ic-s"><use href="#i-file"/></svg></a></div></div>
       </article>
       <article class="work" data-cat="jur">
-        <div class="work-art"><object class="work-preview" data="fichier/26-023_MEMOIRE_TECHNIQUE_DJ_AMAZONIE_CONSTRUCTIONS.pdf#page=1&view=FitH&toolbar=0&navpanes=0" type="application/pdf"><div class="work-art-fallback art-jur"><svg class="ic ic-s"><use href="#i-scale"/></svg></div></object><a class="work-art-link" href="realisations/audit-conformite-pme.pdf" target="_blank" rel="noopener" aria-label="Ouvrir le PDF : Audit de conformité d'une PME"></a></div>
-        <div class="work-info"><h3>Audit de conformité d'une PME</h3><p>Description courte de la mission et du résultat obtenu.</p><div class="work-foot"><span class="tag">Juridique et conformité</span><a class="work-pdf" href="realisations/audit-conformite-pme.pdf" target="_blank" rel="noopener" aria-label="Voir le PDF"><svg class="ic ic-s"><use href="#i-file"/></svg></a></div></div>
+        <div class="work-art"><object class="work-preview" data="fichier/26-023_MEMOIRE_TECHNIQUE_DJ_AMAZONIE_CONSTRUCTIONS.pdf#page=1&view=FitH&toolbar=0&navpanes=0" type="application/pdf"><div class="work-art-fallback art-jur"><svg class="ic ic-s"><use href="#i-scale"/></svg></div></object><a class="work-art-link" href="fichier/26-023_MEMOIRE_TECHNIQUE_DJ_AMAZONIE_CONSTRUCTIONS.pdf" target="_blank" rel="noopener" aria-label="Ouvrir le PDF : Audit de conformité d'une PME"></a></div>
+        <div class="work-info"><h3>Audit de conformité d'une PME</h3><p>Description courte de la mission et du résultat obtenu.</p><div class="work-foot"><span class="tag">Juridique et conformité</span><a class="work-pdf" href="fichier/26-023_MEMOIRE_TECHNIQUE_DJ_AMAZONIE_CONSTRUCTIONS.pdf" target="_blank" rel="noopener" aria-label="Voir le PDF"><svg class="ic ic-s"><use href="#i-file"/></svg></a></div></div>
       </article>
       <article class="work" data-cat="mkt">
-        <div class="work-art"><img class="work-preview-img" src="images/i3.png" alt="Identité visuelle d'une marque" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><div class="work-art-fallback art-mkt" style="display:none"><svg class="ic ic-s"><use href="#i-mega"/></svg></div></div>
-        <div class="work-info"><h3>Identité visuelle </h3><p>  </p><div class="work-foot"><span class="tag">Marketing numérique</span></div></div>
+        <div class="work-art"><img class="work-preview-img" src="images/i3.png" alt="Identité visuelle d'une marque" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><div class="work-art-fallback art-mkt" style="display:none"><svg class="ic ic-s"><use href="#i-mega"/></svg></div><a class="work-art-link" href="images/i3.png" target="_blank" rel="noopener" aria-label="Ouvrir l'image en grand : Identité visuelle d'une marque"></a></div>
+        <div class="work-info"><h3>Identité visuelle </h3><p>  </p><div class="work-foot"><span class="tag">Marketing numérique</span><a class="work-pdf" href="images/i3.png" target="_blank" rel="noopener" aria-label="Voir l'image"><svg class="ic ic-s"><use href="#i-file"/></svg>Voir l'image</a></div></div>
       </article>
       <article class="work" data-cat="ao">
         <div class="work-art"><object class="work-preview" data="fichier/Memoire_technique_SM_CONSTRUCTION_P26-023.pdf#page=1&view=FitH&toolbar=0&navpanes=0" type="application/pdf"><div class="work-art-fallback art-ao"><svg class="ic ic-s"><use href="#i-file"/></svg></div></object><a class="work-art-link" href="realisations/reponse-ao-fournitures.pdf" target="_blank" rel="noopener" aria-label="Ouvrir le PDF : Réponse à un appel d'offres de fournitures"></a></div>
@@ -494,8 +539,8 @@ ul{list-style:none;padding:0}
         <div class="work-info"><h3>Rédaction de contrats types</h3><p> </p><div class="work-foot"><span class="tag">Juridique et conformité</span><a class="work-pdf" href="realisations/redaction-contrats-types.pdf" target="_blank" rel="noopener" aria-label="Voir le PDF"><svg class="ic ic-s"><use href="#i-file"/></svg></a></div></div>
       </article>
       <article class="work" data-cat="mkt">
-        <div class="work-art"><img class="work-preview-img" src="images/i2.png" alt="Calendrier de publications réseaux sociaux" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><div class="work-art-fallback art-mkt" style="display:none"><svg class="ic ic-s"><use href="#i-mega"/></svg></div></div>
-        <div class="work-info"><h3>Calendrier de publications réseaux sociaux</h3><p>Description courte de la mission et du résultat obtenu.</p><div class="work-foot"><span class="tag">Marketing numérique</span></div></div>
+        <div class="work-art"><img class="work-preview-img" src="images/i2.png" alt="Calendrier de publications réseaux sociaux" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><div class="work-art-fallback art-mkt" style="display:none"><svg class="ic ic-s"><use href="#i-mega"/></svg></div><a class="work-art-link" href="images/i2.png" target="_blank" rel="noopener" aria-label="Ouvrir l'image en grand : Calendrier de publications réseaux sociaux"></a></div>
+        <div class="work-info"><h3>Calendrier de publications réseaux sociaux</h3><p>Description courte de la mission et du résultat obtenu.</p><div class="work-foot"><span class="tag">Marketing numérique</span><a class="work-pdf" href="images/i2.png" target="_blank" rel="noopener" aria-label="Voir l'image"><svg class="ic ic-s"><use href="#i-file"/></svg>Voir l'image</a></div></div>
       </article>
     </div>
   </div>
@@ -525,7 +570,7 @@ ul{list-style:none;padding:0}
         </figure>
         <figure class="q">
           <blockquote><p>Je recommande les yeux fermés, travail très professionnel, merci pour tout.</p></blockquote>
-          <figcaption><span class="avatar" aria-hidden="true">SC</span><span><strong>SM CONSTRUCTION</strong><span>Directrice</span></span></figcaption>
+          <figcaption><span class="avatar" aria-hidden="true">SC</span><span><strong>SM CONSTRUCTION</strong><span>Directeur</span></span></figcaption>
         </figure>
         <figure class="q">
           <blockquote><p>Réactif, précis et toujours disponible. Nous avons gagné un temps considérable sur nos réponses aux consultations.</p></blockquote>
@@ -630,7 +675,7 @@ ul{list-style:none;padding:0}
   <div class="wrap">
     <div class="foot-copy">
       <span>© <span id="year">2026</span> Nourou Deen DABINA</span>
-      <span>DND E-service</span>
+      <span>DND E-services</span>
     </div>
     <ul class="socials" aria-label="Réseaux et contacts">
       <li><a data-linkedin href="https://www.linkedin.com/in/nourou-deen-dabina/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="ic ic-f"><use href="#i-in"/></svg></a></li>
@@ -649,15 +694,15 @@ ul{list-style:none;padding:0}
 <script>
 const CONFIG = {
   prenom: "Nourou Deen",
-  whatsapp: "33746310435",
+  whatsapp: "33745516490",
   whatsappMessage: "Bonjour Nourou Deen, je vous contacte depuis votre portfolio.",
   email: "nouroudeendabina26@gmail.com",
   comeup: "https://comeup.com/fr/@dnd-expjuriste",
   linkedin: "https://www.linkedin.com/in/nourou-deen-dabina/",
   cv: "CV_DABINA_FRANCE_2026.pdf",
   photo: "./im10.jpg",
-  location: "Cayenne, 97300 - France",
-  locationMapUrl: "https://www.google.com/maps/search/?api=1&query=Cayenne%2C%2097300%20-%20France"
+  location: "8 Villa Diderot, 93380 Saint-Denis, France",
+  locationMapUrl: "https://www.google.com/maps/search/?api=1&query=8%20Villa%20Diderot%2C%2093380%20Saint-Denis%2C%20France"
 };
 
 (function () {
@@ -730,6 +775,50 @@ const CONFIG = {
   }));
 
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const experienceCards = $$(".experience-card");
+  if (experienceCards.length) {
+    const revealExperience = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add("is-visible");
+      });
+    }, { threshold: .12, rootMargin: "0px 0px -8% 0px" });
+
+    experienceCards.forEach(card => {
+      if (reduce) card.classList.add("is-visible");
+      revealExperience.observe(card);
+    });
+
+    let ticking = false;
+    const pointExperienceCard = () => {
+      ticking = false;
+      const viewportCenter = innerHeight * .5;
+      let closest = null;
+      let closestDistance = Infinity;
+
+      experienceCards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        const center = rect.top + rect.height / 2;
+        const distance = Math.abs(center - viewportCenter);
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closest = card;
+        }
+      });
+
+      experienceCards.forEach(card => card.classList.toggle("is-active", card === closest));
+    };
+
+    const scheduleExperiencePoint = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(pointExperienceCard);
+    };
+
+    pointExperienceCard();
+    addEventListener("scroll", scheduleExperiencePoint, { passive: true });
+    addEventListener("resize", scheduleExperiencePoint);
+  }
 
   const cards = $$(".q");
 
