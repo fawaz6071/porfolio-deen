@@ -47,7 +47,6 @@ ul{list-style:none;padding:0}
 .ic-f{fill:currentColor}
 .ic-s{fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 
-/* ---------- Boutons ---------- */
 .btn{white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:48px;padding:0 1.6rem;border-radius:var(--r-sm);font:700 .95rem var(--sans);border:1.5px solid transparent;cursor:pointer;transition:background .2s,border-color .2s,color .2s,filter .2s}
 .btn-primary{background:var(--accent);color:var(--on-accent)}
 .btn-primary:hover{filter:brightness(1.12)}
@@ -55,7 +54,6 @@ ul{list-style:none;padding:0}
 .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
 .btn-sm{min-height:40px;padding:0 1.15rem;font-size:.88rem}
 
-/* ---------- En-tête ---------- */
 .site-header{position:sticky;top:0;z-index:50;border-bottom:1px solid transparent;transition:background .3s,border-color .3s}
 .site-header.solid{background:rgba(0,0,0,.84);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-color:var(--line)}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;height:74px}
@@ -71,7 +69,6 @@ ul{list-style:none;padding:0}
 .burger[aria-expanded="true"] span:nth-child(2){opacity:0}
 .burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
-/* ---------- Accueil ---------- */
 .hero{position:relative;overflow:hidden;padding:clamp(2rem,6vw,4.5rem) 0 clamp(3.5rem,8vw,6rem)}
 .hero::before{content:"";position:absolute;left:-12%;top:0;width:700px;height:560px;background:radial-gradient(closest-side,rgba(252,236,101,.24),transparent);filter:blur(28px);pointer-events:none;z-index:0}
 .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.12fr .88fr;align-items:center;gap:clamp(2rem,5vw,4rem)}
@@ -92,10 +89,8 @@ ul{list-style:none;padding:0}
 .portrait img{width:100%;height:100%;object-fit:cover;object-position:center top;filter:grayscale(1) contrast(1.05)}
 .silhouette{width:74%;fill:#262629}
 
-/* ---------- Sections ---------- */
 .section{padding:clamp(2rem,4.5vw,3rem) 0 clamp(4rem,9vw,7rem)}
 .section-alt{background:var(--panel)}
-/* Section claire (Services) : contraste fort avec l'Accueil */
 .section-light{background:#f5f4ef;color:#141414}
 .section-light .h2{color:#141414}
 .section-light .lead{color:#5a5a5f}
@@ -115,14 +110,15 @@ ul{list-style:none;padding:0}
 .section-light .q figcaption span span{color:#5a5a5f}
 .section-light .avatar{background:#141414;color:var(--accent)}
 .section-light .q-more{color:#b8971f}
-/* Section orange (Réalisations uniquement) */
 .section-orange{background:#fcec65;color:#141414}
 .section-orange .h2{color:#141414}
 .section-orange .lead{color:#3a1c00}
 .section-orange .chip{border-color:#141414;color:#141414}
 .section-orange .chip:hover{border-color:#000;color:#000}
 .section-orange .chip[aria-pressed="true"]{background:#141414;border-color:#141414;color:var(--accent)}
-#realisations.section-orange .work{background:#141414;border-color:#000}
+#realisations.section-orange .work{background:#141414;border-color:#000;color:#fff}
+#realisations.section-orange .work h3{color:#fff}
+#realisations.section-orange .work p{color:#cfcfd2}
 #realisations.section-orange .work:hover{border-color:var(--accent)}
 .head{margin-bottom:clamp(2rem,5vw,3.5rem)}
 .h2{font:600 clamp(1.7rem,3.6vw,2.6rem)/1.15 var(--serif);letter-spacing:-.02em;text-align:center}
@@ -136,7 +132,6 @@ ul{list-style:none;padding:0}
 .ticks li{position:relative;padding-left:1.6rem}
 .ticks li::before{content:"";position:absolute;left:0;top:.72em;width:.8rem;height:2px;background:var(--accent)}
 
-/* À propos */
 .about{display:grid;grid-template-columns:260px 1fr;gap:clamp(2rem,5vw,3.5rem);align-items:start;margin-top:2rem}
 .about-photo{order:1;position:sticky;top:100px}
 .about-photo .frame{position:relative;aspect-ratio:3/4;border-radius:var(--r-lg);overflow:hidden;background:radial-gradient(circle at 50% 30%,#202022,#0d0d0e 72%);display:grid;place-items:end center}
@@ -151,7 +146,6 @@ ul{list-style:none;padding:0}
 .svc-tagline .sep{color:var(--accent);margin:0 .6rem;font-weight:700}
 @keyframes svc-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @media (prefers-reduced-motion:reduce){.svc-tagline{mask-image:none;-webkit-mask-image:none}.svc-tagline-track{animation:none;flex-wrap:wrap;width:auto}.svc-tagline-item{white-space:normal;padding-right:0}.svc-tagline-item:nth-child(2){display:none}}
-/* Services */
 .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
 .svc-card{position:relative;overflow:hidden;background:var(--panel);border:1px solid var(--line);border-radius:var(--r-lg);padding:clamp(1.75rem,3vw,2.5rem);transition:transform .25s,border-color .25s}
 .section-alt .svc-card{background:var(--bg)}
@@ -164,7 +158,6 @@ ul{list-style:none;padding:0}
 .svc-card h3{font:600 1.3rem/1.25 var(--serif);margin-bottom:.75rem}
 .svc-desc{color:var(--muted)}
 
-/* Expériences */
 .timeline{margin:0 auto;max-width:680px;padding-left:210px;box-sizing:border-box}
 .job{position:relative;padding:0 0 2.9rem 2.25rem;border-left:1px solid #34343a}
 .job:last-child{padding-bottom:0}
@@ -173,7 +166,6 @@ ul{list-style:none;padding:0}
 .job h3{font:600 1.2rem/1.3 var(--serif)}
 .job .where{color:var(--accent);font-weight:600;font-size:.95rem;margin:.15rem 0 .8rem}
 
-/* Réalisations */
 .filters{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;margin-bottom:1.75rem}
 .chip{padding:.55rem 1.15rem;border:1px solid var(--line);border-radius:99px;background:transparent;color:var(--muted);font:600 .9rem var(--sans);cursor:pointer;transition:background .2s,color .2s,border-color .2s}
 .chip:hover{border-color:var(--accent);color:var(--text)}
@@ -199,7 +191,6 @@ ul{list-style:none;padding:0}
 .work-pdf .ic{width:16px;height:16px}
 .work-pdf:hover{text-decoration:underline}
 
-/* Témoignages : défilement continu (même principe que le bandeau Services) */
 .quotes{--gap:1.25rem}
 .q-track-wrap{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent);mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent)}
 .q-track{display:flex;align-items:flex-start;gap:var(--gap);width:max-content;animation:q-scroll 55s linear infinite}
@@ -220,7 +211,6 @@ ul{list-style:none;padding:0}
 .q figcaption strong{display:block;line-height:1.3}
 .q figcaption span span{display:block;min-height:2.8em;color:var(--muted);font-size:.86rem;line-height:1.4}
 
-/* Contact */
 .contact{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(2rem,6vw,5rem);align-items:start}
 .contact>*{min-width:0}
 .contact-list{display:grid;gap:.85rem;margin-top:2rem}
@@ -237,19 +227,16 @@ ul{list-style:none;padding:0}
 .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
 .form-note{min-height:1.5em;color:var(--muted);font-size:.9rem}
 
-/* Pied de page */
 .foot{padding:2.5rem 0 6rem;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
 .foot .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.25rem 2rem}
 .foot-copy{display:flex;flex-wrap:wrap;gap:.5rem 1.5rem}
 .foot .socials{margin:0}
 .foot .socials a{width:38px;height:38px}
 
-/* Réseaux sociaux (réutilisé en pied de page) */
 .socials{display:flex;gap:.7rem;margin:1.6rem 0}
 .socials a{display:grid;place-items:center;width:42px;height:42px;border:1px solid var(--line);border-radius:50%;background:var(--panel);color:var(--muted);transition:color .2s,border-color .2s}
 .socials a:hover{color:var(--accent);border-color:var(--accent)}
 
-/* Bouton WhatsApp flottant */
 .wa{position:fixed;right:max(1.25rem,env(safe-area-inset-right));bottom:max(1.25rem,env(safe-area-inset-bottom));z-index:60;display:grid;place-items:center;width:60px;height:60px;border-radius:50%;background:var(--accent);color:var(--on-accent);box-shadow:0 10px 30px rgba(252,236,101,.38);transition:transform .2s,filter .2s}
 .wa:hover{transform:scale(1.07);filter:brightness(1.12)}
 .wa svg{width:31px;height:31px}
@@ -257,9 +244,8 @@ ul{list-style:none;padding:0}
 .wa:hover .wa-tip,.wa:focus-visible .wa-tip{opacity:1}
 @media (hover:none){.wa-tip{display:none}}
 
-/* ---------- Textes justifiés ---------- */
 .about-text p,.svc-desc,.ticks li,.work p,.q p{text-align:justify;text-justify:inter-word;hyphens:auto;-webkit-hyphens:auto}
-/* ---------- Responsive ---------- */
+
 @media (max-width:1060px){
   .burger{display:grid}
   .nav-cta{display:none}
@@ -281,7 +267,6 @@ ul{list-style:none;padding:0}
   .job-date{position:static;width:auto;text-align:left;margin-bottom:.35rem}
 }
 @media (max-width:600px){
-  /* Tailles de police ramenées à une échelle "normale" sur mobile */
   .hi{font-size:.9rem}
   .name{font-size:1.7rem!important}
   .role{font-size:.92rem}
@@ -326,7 +311,6 @@ ul{list-style:none;padding:0}
 </head>
 <body>
 
-<!-- Icônes -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <symbol id="i-wa" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></symbol>
   <symbol id="i-in" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></symbol>
@@ -363,7 +347,6 @@ ul{list-style:none;padding:0}
 
 <main id="contenu">
 
-<!-- ===================== ACCUEIL ===================== -->
 <section class="hero" id="accueil">
   <div class="wrap hero-grid">
     <div class="hero-copy">
@@ -376,7 +359,6 @@ ul{list-style:none;padding:0}
         <a class="btn btn-ghost" data-cv href="#" download>Télécharger mon CV</a>
       </div>
 
-      <!-- Chiffres clés : EXEMPLES à remplacer -->
       <div class="stats">
         <div class="stat"><b>5+</b><span>Années d'expérience</span></div>
         <div class="stat"><b>300+</b><span>Dossiers traités</span></div>
@@ -393,7 +375,6 @@ ul{list-style:none;padding:0}
   </div>
 </section>
 
-<!-- ===================== SERVICES ===================== -->
 <section class="section section-light" id="services">
   <div class="wrap">
     <div class="svc-tagline" aria-label="Juriste Freelance, Gestion d'Appel d'Offres - Marchés Publics, Marketing Numérique : Copywriting - SEO - Graphisme - CM, OF/Qualiopi/EDOF/NDA/CPF/OPCO/CertifPro, Admin, VAE/Thèse/Mémoire, Conformité AUDIT CDC">
@@ -426,7 +407,6 @@ ul{list-style:none;padding:0}
   </div>
 </section>
 
-<!-- ===================== EXPÉRIENCES (EXEMPLES à remplacer) ===================== -->
 <section class="section section-alt" id="experiences">
   <div class="wrap">
     <div class="head">
@@ -480,7 +460,6 @@ ul{list-style:none;padding:0}
   </div>
 </section>
 
-<!-- ===================== RÉALISATIONS (EXEMPLES à remplacer) ===================== -->
 <section class="section section-orange" id="realisations">
   <div class="wrap">
     <div class="head">
@@ -522,7 +501,6 @@ ul{list-style:none;padding:0}
   </div>
 </section>
 
-<!-- ===================== TÉMOIGNAGES (EXEMPLES à remplacer) ===================== -->
 <section class="section section-light" id="temoignages">
   <div class="wrap">
     <div class="head">
@@ -612,7 +590,6 @@ ul{list-style:none;padding:0}
   </div>
 </section>
 
-<!-- ===================== CONTACT ===================== -->
 <section class="section" id="contact">
   <div class="wrap contact">
     <div>
@@ -664,7 +641,6 @@ ul{list-style:none;padding:0}
   </div>
 </footer>
 
-<!-- Bouton WhatsApp flottant -->
 <a class="wa" data-wa href="#" target="_blank" rel="noopener" aria-label="Écrire sur WhatsApp">
   <svg class="ic-f" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-wa"/></svg>
   <span class="wa-tip">Écrire sur WhatsApp</span>
@@ -704,7 +680,11 @@ const CONFIG = {
       const img = $(imgSel);
       if (!img) return;
       img.src = CONFIG.photo;
-      img.onload = () => { img.hidden = false; const s = $(silSel); if (s) s.style.display = "none"; };
+      img.onload = () => {
+        img.hidden = false;
+        const s = $(silSel);
+        if (s) s.style.display = "none";
+      };
     });
   }
 
@@ -719,23 +699,30 @@ const CONFIG = {
     burger.setAttribute("aria-expanded", open);
     burger.setAttribute("aria-label", open ? "Fermer le menu" : "Ouvrir le menu");
   };
+
   burger.addEventListener("click", () => setMenu(!menu.classList.contains("open")));
   $$("a", menu).forEach(a => a.addEventListener("click", () => setMenu(false)));
-  addEventListener("keydown", e => { if (e.key === "Escape") setMenu(false); });
+  addEventListener("keydown", e => {
+    if (e.key === "Escape") setMenu(false);
+  });
 
   const links = $$('.menu a[href^="#"]:not(.btn)');
   const io = new IntersectionObserver(entries => {
     entries.forEach(en => {
       if (!en.isIntersecting) return;
       links.forEach(l => {
-        if (l.getAttribute("href") === "#" + en.target.id) l.setAttribute("aria-current", "true");
-        else l.removeAttribute("aria-current");
+        if (l.getAttribute("href") === "#" + en.target.id)
+          l.setAttribute("aria-current", "true");
+        else
+          l.removeAttribute("aria-current");
       });
     });
   }, { rootMargin: "-45% 0px -50% 0px" });
+
   $$("main section[id]").forEach(s => io.observe(s));
 
   const chips = $$(".chip"), works = $$(".work");
+
   chips.forEach(b => b.addEventListener("click", () => {
     chips.forEach(x => x.setAttribute("aria-pressed", x === b));
     const f = b.dataset.filter;
@@ -749,33 +736,53 @@ const CONFIG = {
   cards.forEach(q => {
     const p = q.querySelector("blockquote p");
     const btn = document.createElement("button");
+
     btn.type = "button";
     btn.className = "q-more";
     btn.textContent = "Voir plus";
+
     q.querySelector("blockquote").after(btn);
+
     btn.addEventListener("click", () => {
       const open = q.classList.toggle("expanded");
       btn.textContent = open ? "Voir moins" : "Voir plus";
     });
+
     const checkOverflow = () => {
       if (!q.classList.contains("expanded")) {
         btn.classList.toggle("show", p.scrollHeight > p.clientHeight + 2);
       }
     };
+
     checkOverflow();
     addEventListener("resize", checkOverflow);
   });
 
   const form = $("#form"), note = $("#formNote");
+
   form.addEventListener("submit", e => {
     e.preventDefault();
-    if (!form.checkValidity()) { form.reportValidity(); return; }
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
     const d = new FormData(form);
-    const msg = "Bonjour " + CONFIG.prenom + ", je suis " + d.get("nom") + ".\nBesoin : " + d.get("besoin") + "\n\n" + d.get("message");
+
+    const msg =
+      "Bonjour " + CONFIG.prenom +
+      ", je suis " + d.get("nom") +
+      ".\nBesoin : " + d.get("besoin") +
+      "\n\n" + d.get("message");
+
     window.open(waLink(msg), "_blank", "noopener");
-    note.textContent = "WhatsApp s'ouvre avec votre message. Envoyez-le pour finaliser la demande.";
+
+    note.textContent =
+      "WhatsApp s'ouvre avec votre message. Envoyez-le pour finaliser la demande.";
   });
 })();
 </script>
+
 </body>
 </html>
