@@ -12,31 +12,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script>document.documentElement.classList.add("js");</script>
 
-<!--
-  ============================================================
-  COMMENT MODIFIER CE PORTFOLIO
-  1. Tout ce qui est personnel se règle dans l'objet CONFIG,
-     tout en bas du fichier (WhatsApp, e-mail, Comeup, LinkedIn, CV, photo).
-  2. Les chiffres clés, expériences, réalisations et témoignages
-     sont des EXEMPLES : remplacez-les directement dans le HTML.
-  3. Pour la photo : mettez photo.jpg à côté de ce fichier,
-     puis renseignez photo: "photo.jpg" dans CONFIG.
-  4. Pour les PDF dans "Réalisations" : créez un dossier
-     "realisations" à côté de ce fichier, déposez-y vos PDF avec
-     exactement les noms utilisés dans le href de chaque carte
-     (par ex. realisations/dossier-marche-travaux.pdf). L'en-tête
-     de la carte affiche alors un aperçu de la première page du
-     PDF ; si le fichier est introuvable, l'icône d'origine
-     s'affiche à la place. Si une carte n'a pas de PDF à joindre,
-     supprimez le lien <a class="work-pdf">...</a> sous la carte.
-  5. Pour les 2 cartes "Marketing numérique" de Réalisations :
-     déposez dans ce même dossier "realisations" deux images
-     nommées identite-visuelle-marque.jpg et
-     calendrier-publications.jpg. Une image manquante disparaît
-     simplement au profit de l'icône, sans casser la mise en page.
-  ============================================================
--->
-
 <style>
 :root{
   color-scheme:dark;
@@ -132,6 +107,23 @@ ul{list-style:none;padding:0}
 .section-light .svc-desc{color:#5a5a5f}
 .section-light .svc-icon{background:#141414;color:var(--accent)}
 .section-light .svc-card:hover .svc-icon{background:var(--accent);color:#141414}
+.section-light .q{background:#ffffff;border-color:#e7e5dd;box-shadow:0 1px 2px rgba(20,20,20,.04)}
+.section-light .q blockquote::before{color:#b8971f}
+.section-light .q p{color:#141414}
+.section-light .q figcaption{border-top-color:#e7e5dd}
+.section-light .q figcaption strong{color:#141414}
+.section-light .q figcaption span span{color:#5a5a5f}
+.section-light .avatar{background:#141414;color:var(--accent)}
+.section-light .q-more{color:#b8971f}
+/* Section orange (Réalisations uniquement) */
+.section-orange{background:#fcec65;color:#141414}
+.section-orange .h2{color:#141414}
+.section-orange .lead{color:#3a1c00}
+.section-orange .chip{border-color:#141414;color:#141414}
+.section-orange .chip:hover{border-color:#000;color:#000}
+.section-orange .chip[aria-pressed="true"]{background:#141414;border-color:#141414;color:var(--accent)}
+#realisations.section-orange .work{background:#141414;border-color:#000}
+#realisations.section-orange .work:hover{border-color:var(--accent)}
 .head{margin-bottom:clamp(2rem,5vw,3.5rem)}
 .h2{font:600 clamp(1.7rem,3.6vw,2.6rem)/1.15 var(--serif);letter-spacing:-.02em;text-align:center}
 .lead{color:var(--muted);max-width:56ch;margin-top:.9rem;margin-inline:auto;text-align:center}
@@ -182,7 +174,7 @@ ul{list-style:none;padding:0}
 .job .where{color:var(--accent);font-weight:600;font-size:.95rem;margin:.15rem 0 .8rem}
 
 /* Réalisations */
-.filters{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1.75rem}
+.filters{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;margin-bottom:1.75rem}
 .chip{padding:.55rem 1.15rem;border:1px solid var(--line);border-radius:99px;background:transparent;color:var(--muted);font:600 .9rem var(--sans);cursor:pointer;transition:background .2s,color .2s,border-color .2s}
 .chip:hover{border-color:var(--accent);color:var(--text)}
 .chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
@@ -207,11 +199,15 @@ ul{list-style:none;padding:0}
 .work-pdf .ic{width:16px;height:16px}
 .work-pdf:hover{text-decoration:underline}
 
-/* Témoignages : défilement continu, animé */
+/* Témoignages : défilement continu (même principe que le bandeau Services) */
 .quotes{--gap:1.25rem}
-.q-track{display:flex;align-items:flex-start;gap:var(--gap);overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:2px}
-.q-track::-webkit-scrollbar{display:none}
-.q{flex:0 0 calc((100% - 2 * var(--gap)) / 3);scroll-snap-align:start;display:flex;flex-direction:column;height:400px;padding:clamp(1.4rem,2.4vw,1.9rem);background:var(--panel);border:1px solid var(--line);border-radius:var(--r-lg);transition:height .25s ease}
+.q-track-wrap{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent);mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent)}
+.q-track{display:flex;align-items:flex-start;gap:var(--gap);width:max-content;animation:q-scroll 55s linear infinite}
+.q-track:hover,.q-track:focus-within{animation-play-state:paused}
+.q-group{display:flex;align-items:flex-start;gap:var(--gap);flex:none}
+@keyframes q-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.q-track-wrap{overflow-x:auto}.q-track{animation:none}.q-dup{display:none}}
+.q{flex:0 0 340px;width:340px;display:flex;flex-direction:column;height:400px;padding:clamp(1.4rem,2.4vw,1.9rem);background:var(--panel);border:1px solid var(--line);border-radius:var(--r-lg);transition:height .25s ease}
 .q.expanded{height:auto}
 .q blockquote::before{content:"\201C";display:block;height:1.9rem;font:700 3.6rem/1 var(--serif);color:var(--accent)}
 .q p{overflow:hidden;font:500 1rem/1.7 var(--serif);display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical}
@@ -223,10 +219,6 @@ ul{list-style:none;padding:0}
 .avatar{display:grid;place-items:center;flex:none;width:48px;height:48px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-weight:700;font-size:.9rem}
 .q figcaption strong{display:block;line-height:1.3}
 .q figcaption span span{display:block;min-height:2.8em;color:var(--muted);font-size:.86rem;line-height:1.4}
-.q-nav{display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:1.75rem}
-.q-btn{display:grid;place-items:center;width:46px;height:46px;border:1px solid var(--line);border-radius:50%;background:transparent;color:var(--text);cursor:pointer;transition:border-color .2s,color .2s}
-.q-btn:hover{border-color:var(--accent);color:var(--accent)}
-.q-count{color:var(--muted);font-weight:600;font-size:.92rem;min-width:7ch;text-align:center}
 
 /* Contact */
 .contact{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(2rem,6vw,5rem);align-items:start}
@@ -284,7 +276,7 @@ ul{list-style:none;padding:0}
   .about{grid-template-columns:1fr}
   .about-photo{position:static;max-width:260px;margin-inline:auto}
   .works{grid-template-columns:repeat(2,1fr)}
-  .q{flex-basis:calc((100% - var(--gap)) / 2)}
+  .q{width:300px}
   .timeline{padding-left:.5rem;max-width:100%}
   .job-date{position:static;width:auto;text-align:left;margin-bottom:.35rem}
 }
@@ -319,7 +311,7 @@ ul{list-style:none;padding:0}
   .foot{font-size:.8rem}
   .portrait-wrap{width:100%}
   .works{grid-template-columns:1fr}
-  .q{flex-basis:100%}
+  .q{width:260px}
   .stats{flex-wrap:wrap;row-gap:1rem}
   .stat{flex:1 1 40%;padding:0 1rem}
   .stat:nth-child(3){border-left:0}
@@ -489,7 +481,7 @@ ul{list-style:none;padding:0}
 </section>
 
 <!-- ===================== RÉALISATIONS (EXEMPLES à remplacer) ===================== -->
-<section class="section" id="realisations">
+<section class="section section-orange" id="realisations">
   <div class="wrap">
     <div class="head">
       <h2 class="h2">Réalisations</h2>
@@ -531,14 +523,16 @@ ul{list-style:none;padding:0}
 </section>
 
 <!-- ===================== TÉMOIGNAGES (EXEMPLES à remplacer) ===================== -->
-<section class="section section-alt" id="temoignages">
+<section class="section section-light" id="temoignages">
   <div class="wrap">
     <div class="head">
       <h2 class="h2">Témoignages</h2>
       <p class="lead">Ce que disent les clients accompagnés.</p>
     </div>
     <div class="quotes">
-      <div class="q-track" id="qTrack" tabindex="0" aria-label="Témoignages de clients, faites défiler horizontalement">
+      <div class="q-track-wrap">
+      <div class="q-track" id="qTrack">
+        <div class="q-group">
         <figure class="q">
           <blockquote><p>Je recommande vivement Nourou pour son accompagnement exceptionnel. Il a soutenu WA Africa dans l'ensemble de ses processus juridiques et contractuels avec une grande réactivité, une rapidité d'exécution remarquable et une expertise précieuse. Toujours disponible, il a su apporter des conseils avisés et adaptés à chaque situation, ce qui a permis d'avancer efficacement et en toute confiance. Un partenaire de confiance que je recommande sans hésitation.</p></blockquote>
           <figcaption><span class="avatar" aria-hidden="true">SP</span><span><strong>Salviane H. Pernelle</strong><span>WA Africa</span></span></figcaption>
@@ -574,12 +568,45 @@ ul{list-style:none;padding:0}
           <blockquote><p>Bonne communication, bon suivi, services conformes aux attentes. Nous retravaillerons ensemble.</p></blockquote>
           <figcaption><span class="avatar" aria-hidden="true">LI</span><span><strong>LENA IT</strong><span>Directrice</span></span></figcaption>
         </figure>
-   
+        </div>
+        <div class="q-group q-dup" aria-hidden="true">
+        <figure class="q">
+          <blockquote><p>Je recommande vivement Nourou pour son accompagnement exceptionnel. Il a soutenu WA Africa dans l'ensemble de ses processus juridiques et contractuels avec une grande réactivité, une rapidité d'exécution remarquable et une expertise précieuse. Toujours disponible, il a su apporter des conseils avisés et adaptés à chaque situation, ce qui a permis d'avancer efficacement et en toute confiance. Un partenaire de confiance que je recommande sans hésitation.</p></blockquote>
+          <figcaption><span class="avatar" aria-hidden="true">SP</span><span><strong>Salviane H. Pernelle</strong><span>WA Africa</span></span></figcaption>
+        </figure>
+        <figure class="q">
+          <blockquote><p>Je recommande Nourou-Deen avec plaisir, car je travaille actuellement avec lui. Il est à la fois efficace et réactif. Nous avons collaboré sur plusieurs sujets : suivi comptable, gestion des ressources humaines, déclarations fiscales, bilans des sociétés, réponses aux appels d'offres, etc. Il apporte une vraie valeur ajoutée à l'entreprise. Vous pouvez lui faire confiance, il fera la différence.</p></blockquote>
+          <figcaption><span class="avatar" aria-hidden="true">EA</span><span><strong>Elom AMENUDZIE</strong><span>  </span></span></figcaption>
+        </figure>
+        <figure class="q">
+          <blockquote><p>J'ai fait appel à ce prestataire pour la constitution et la soumission de dossiers de candidature aux appels d'offres publics pour mon entreprise de sécurité, et je suis plus que satisfait de son travail. Il a su gérer l'ensemble du processus avec professionnalisme, rigueur et une grande réactivité. Grâce à son expertise, il a monté des dossiers complets et conformes aux exigences administratives, un travail que je peinais à faire moi-même. Son sérieux, son efficacité et son souci du détail m'ont grandement facilité la tâche. Je recommande vivement ses services à toute entreprise souhaitant optimiser ses chances dans les marchés publics. Un vrai professionnel sur qui on peut compter !</p></blockquote>
+          <figcaption><span class="avatar" aria-hidden="true">GS</span><span><strong>GALAXY SECURITY</strong><span>Responsable administratif</span></span></figcaption>
+        </figure>
+        <figure class="q">
+          <blockquote><p>Je recommande les yeux fermés, travail très professionnel, merci pour tout.</p></blockquote>
+          <figcaption><span class="avatar" aria-hidden="true">SC</span><span><strong>SM CONSTRUCTION</strong><span>Directrice</span></span></figcaption>
+        </figure>
+        <figure class="q">
+          <blockquote><p>Réactif, précis et toujours disponible. Nous avons gagné un temps considérable sur nos réponses aux consultations.</p></blockquote>
+          <figcaption><span class="avatar" aria-hidden="true">PN</span><span><strong>Client PN</strong><span>Responsable administratif</span></span></figcaption>
+        </figure>
+        <figure class="q">
+          <blockquote><p>"Bonjour, Cela fait un moment que je fais appel à ses services, même si des ajustements de planning ont régulièrement décalé nos collaborations.
+            Pour mes travaux juridiques, j'avais la conviction qu'il était le bon interlocuteur — et j'ai tout de même pris le temps de comparer avec d'autres prestataires avant de me décider.
+            Le résultat est à la hauteur de mes attentes : mes documents juridiques obligatoires sont désormais complets et opérationnels. Une base solide pour démarrer sereinement, avec la protection nécessaire pour moi comme pour mes clients.
+            Merci encore, et à très bientôt pour de nouveaux projets.</p></blockquote>
+          <figcaption><span class="avatar" aria-hidden="true">KY</span><span><strong>Kevin Yogami</strong><span>Responsable administratif</span></span></figcaption>
+        </figure>
+        <figure class="q">
+          <blockquote><p>Un grand merci !! je reviendrais pour d'autres contrats !!!! vous m'avez évitez de grosses bêtises... MERCI ET AU TOP</p></blockquote>
+          <figcaption><span class="avatar" aria-hidden="true">BK</span><span><strong>Bastien Krafft</strong><span></span></span></figcaption>
+        </figure>
+        <figure class="q">
+          <blockquote><p>Bonne communication, bon suivi, services conformes aux attentes. Nous retravaillerons ensemble.</p></blockquote>
+          <figcaption><span class="avatar" aria-hidden="true">LI</span><span><strong>LENA IT</strong><span>Directrice</span></span></figcaption>
+        </figure>
+        </div>
       </div>
-      <div class="q-nav" id="qNav">
-        <button class="q-btn" type="button" id="qPrev" aria-label="Témoignages précédents"><svg class="ic ic-s"><use href="#i-prev"/></svg></button>
-        <span class="q-count" id="qCount" aria-live="polite"></span>
-        <button class="q-btn" type="button" id="qNext" aria-label="Témoignages suivants"><svg class="ic ic-s"><use href="#i-next"/></svg></button>
       </div>
     </div>
   </div>
@@ -644,30 +671,24 @@ ul{list-style:none;padding:0}
 </a>
 
 <script>
-/* ============================================================
-   RÉGLAGES À MODIFIER
-   ============================================================ */
 const CONFIG = {
   prenom: "Nourou Deen",
-  // Numéro WhatsApp au format international, sans + ni espaces (exemple : 2250102030405)
   whatsapp: "33746310435",
   whatsappMessage: "Bonjour Nourou Deen, je vous contacte depuis votre portfolio.",
   email: "nouroudeendabina26@gmail.com",
   comeup: "https://comeup.com/fr/@dnd-expjuriste",
   linkedin: "https://www.linkedin.com/in/nourou-deen-dabina/",
-  cv: "CV_DABINA_FRANCE_2026.pdf",   // mettez le fichier PDF à côté de cette page
-  photo: "./im10.jpg",                          // exemple : "photo.jpg"
+  cv: "CV_DABINA_FRANCE_2026.pdf",
+  photo: "./im10.jpg",
   location: "Cayenne, 97300 - France",
-  locationMapUrl: "https://www.google.com/maps/search/?api=1&query=Cayenne%2C%2097300%20-%20France" // lien Google Maps correspondant
+  locationMapUrl: "https://www.google.com/maps/search/?api=1&query=Cayenne%2C%2097300%20-%20France"
 };
 
-/* ============================================================ */
 (function () {
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const waLink = (msg) => "https://wa.me/" + CONFIG.whatsapp + "?text=" + encodeURIComponent(msg);
 
-  /* Liens de contact */
   $$("[data-wa]").forEach(a => a.href = waLink(CONFIG.whatsappMessage));
   $$("[data-mail]").forEach(a => a.href = "mailto:" + CONFIG.email);
   $$("[data-mail-text]").forEach(e => e.textContent = CONFIG.email);
@@ -678,7 +699,6 @@ const CONFIG = {
   $$("[data-location-text]").forEach(e => e.textContent = CONFIG.location);
   $("#year").textContent = new Date().getFullYear();
 
-  /* Photo (hero + à propos) */
   if (CONFIG.photo) {
     [["#photo", "#silhouette"], ["#photoAbout", "#silhouetteAbout"]].forEach(([imgSel, silSel]) => {
       const img = $(imgSel);
@@ -688,13 +708,11 @@ const CONFIG = {
     });
   }
 
-  /* En-tête : fond au défilement */
   const header = $(".site-header");
   const onScroll = () => header.classList.toggle("solid", scrollY > 10);
   onScroll();
   addEventListener("scroll", onScroll, { passive: true });
 
-  /* Menu mobile */
   const burger = $(".burger"), menu = $("#menu");
   const setMenu = (open) => {
     menu.classList.toggle("open", open);
@@ -705,7 +723,6 @@ const CONFIG = {
   $$("a", menu).forEach(a => a.addEventListener("click", () => setMenu(false)));
   addEventListener("keydown", e => { if (e.key === "Escape") setMenu(false); });
 
-  /* Lien actif dans le menu */
   const links = $$('.menu a[href^="#"]:not(.btn)');
   const io = new IntersectionObserver(entries => {
     entries.forEach(en => {
@@ -718,7 +735,6 @@ const CONFIG = {
   }, { rootMargin: "-45% 0px -50% 0px" });
   $$("main section[id]").forEach(s => io.observe(s));
 
-  /* Filtres des réalisations */
   const chips = $$(".chip"), works = $$(".work");
   chips.forEach(b => b.addEventListener("click", () => {
     chips.forEach(x => x.setAttribute("aria-pressed", x === b));
@@ -728,11 +744,8 @@ const CONFIG = {
 
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* Témoignages : 3 par ligne sur ordinateur, le reste défile, avec lecture automatique */
-  const track = $("#qTrack"), count = $("#qCount"), qNav = $("#qNav");
-  const cards = $$(".q", track);
+  const cards = $$(".q");
 
-  /* Ajoute un bouton « Voir plus » sur les témoignages trop longs */
   cards.forEach(q => {
     const p = q.querySelector("blockquote p");
     const btn = document.createElement("button");
@@ -753,46 +766,6 @@ const CONFIG = {
     addEventListener("resize", checkOverflow);
   });
 
-  const stepW = () => cards.length > 1 ? cards[1].offsetLeft - cards[0].offsetLeft : cards[0].offsetWidth;
-  const gapW = () => stepW() - cards[0].offsetWidth;
-  const perView = () => Math.max(1, Math.floor((track.clientWidth + gapW() + 4) / stepW()));
-  const first = () => Math.round(track.scrollLeft / stepW());
-  const updateQ = () => {
-    const pv = perView(), f = first();
-    qNav.hidden = cards.length <= pv;
-    const last = Math.min(cards.length, f + pv);
-    count.textContent = pv > 1 ? (f + 1) + "–" + last + " sur " + cards.length : (f + 1) + " / " + cards.length;
-  };
-  const goQ = (delta) => {
-    const maxFirst = Math.max(0, cards.length - perView());
-    let n = first() + delta;
-    if (n > maxFirst) n = 0;
-    if (n < 0) n = maxFirst;
-    track.scrollTo({ left: n * stepW(), behavior: reduce ? "auto" : "smooth" });
-  };
-  $("#qPrev").addEventListener("click", () => { goQ(-1); restartAuto(); });
-  $("#qNext").addEventListener("click", () => { goQ(1); restartAuto(); });
-  track.addEventListener("scroll", updateQ, { passive: true });
-  addEventListener("resize", updateQ);
-  updateQ();
-
-  /* Défilement automatique du carrousel de témoignages */
-  let autoTimer = null;
-  const AUTO_DELAY = 4000;
-  const startAuto = () => {
-    if (reduce || cards.length <= perView()) return;
-    stopAuto();
-    autoTimer = setInterval(() => goQ(1), AUTO_DELAY);
-  };
-  const stopAuto = () => { if (autoTimer) { clearInterval(autoTimer); autoTimer = null; } };
-  const restartAuto = () => { stopAuto(); startAuto(); };
-  track.addEventListener("mouseenter", stopAuto);
-  track.addEventListener("mouseleave", startAuto);
-  track.addEventListener("focusin", stopAuto);
-  track.addEventListener("focusout", startAuto);
-  startAuto();
-
-  /* Formulaire : le message s'ouvre dans WhatsApp */
   const form = $("#form"), note = $("#formNote");
   form.addEventListener("submit", e => {
     e.preventDefault();
