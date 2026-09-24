@@ -278,6 +278,24 @@ ul{list-style:none;padding:0}
 .work-carousel-open:hover{background:rgba(0,0,0,.75);border-color:var(--accent)}
 .work-carousel-open .ic{width:16px;height:16px}
 
+.work-lightbox{position:fixed;inset:0;z-index:200;display:grid;place-items:center;padding:clamp(1rem,4vw,3rem)}
+.work-lightbox-backdrop{position:absolute;inset:0;background:rgba(0,0,0,0);transition:background .28s ease}
+.work-lightbox.open .work-lightbox-backdrop{background:rgba(0,0,0,.88)}
+.work-lightbox-inner{position:relative;z-index:1;width:min(94vw,920px);aspect-ratio:16/10;border-radius:var(--r-lg);overflow:hidden;background:#0f0f10;border:1px solid var(--line);transform:scale(.4);opacity:0;transition:transform .32s cubic-bezier(.2,.8,.2,1),opacity .24s ease}
+.work-lightbox.open .work-lightbox-inner{transform:scale(1);opacity:1}
+.work-lightbox-track{display:flex;width:100%;height:100%;overflow-x:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth}
+.work-lightbox-slide{flex:0 0 100%;width:100%;height:100%;scroll-snap-align:start}
+.work-lightbox-slide img{width:100%;height:100%;object-fit:contain;background:#000;display:block}
+.work-lightbox-close{position:absolute;top:.8rem;right:.8rem;width:40px;height:40px;border-radius:50%;background:rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.35);color:#fff;display:grid;place-items:center;cursor:pointer;z-index:2;transition:border-color .2s}
+.work-lightbox-close:hover{border-color:var(--accent)}
+.work-lightbox-btn{position:absolute;top:50%;translate:0 -50%;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.35);background:rgba(0,0,0,.55);color:#fff;display:grid;place-items:center;cursor:pointer;z-index:2;transition:border-color .2s}
+.work-lightbox-btn:hover{border-color:var(--accent)}
+.work-lightbox-prev{left:.8rem}
+.work-lightbox-next{right:.8rem}
+.work-lightbox-dots{position:absolute;left:0;right:0;bottom:.8rem;display:flex;justify-content:center;gap:.45rem;z-index:2}
+.work-lightbox-dot{width:8px;height:8px;padding:0;border-radius:50%;border:1px solid rgba(255,255,255,.6);background:rgba(255,255,255,.35);cursor:pointer}
+.work-lightbox-dot[aria-selected="true"]{background:var(--accent);border-color:var(--accent)}
+
 .quotes{--gap:1.25rem}
 .q-track-wrap{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent);mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent)}
 .q-track{display:flex;align-items:flex-start;gap:var(--gap);width:max-content;animation:q-scroll 55s linear infinite}
@@ -641,11 +659,11 @@ ul{list-style:none;padding:0}
     <div class="works">
       <article class="work" data-cat="ao">
         <div class="work-art"><object class="work-preview" data="fichier/Memoire_technique_SM_CONSTRUCTION_P26-023.pdf#page=1&view=FitH&toolbar=0&navpanes=0" type="application/pdf"><div class="work-art-fallback art-ao"><svg class="ic ic-s"><use href="#i-file"/></svg></div></object></div>
-        <div class="work-info"><h3>Mémoire Technique de SM CONSTRUCTION</h3><p></p><div class="work-foot"><span class="tag">Appels d'offres</span></div></div>
+        <div class="work-info"><h3>Mémoire Technique d’un projet de l'entreprise SM CONSTRUCTION</h3><p></p><div class="work-foot"><span class="tag">Appels d'offres</span></div></div>
       </article>
       <article class="work" data-cat="jur">
         <div class="work-art"><object class="work-preview" data="fichier/26-023_MEMOIRE_TECHNIQUE_DJ_AMAZONIE_CONSTRUCTIONS.pdf#page=1&view=FitH&toolbar=0&navpanes=0" type="application/pdf"><div class="work-art-fallback art-jur"><svg class="ic ic-s"><use href="#i-scale"/></svg></div></object></div>
-        <div class="work-info"><h3>Mémoire Technique de DJ AMAZONIE</h3><p></p><div class="work-foot"><span class="tag">Juridique et conformité</span></div></div>
+        <div class="work-info"><h3>Mémoire Technique d’un projet de l'entreprise DJ AMAZONIE </h3><p></p><div class="work-foot"><span class="tag">Juridique et conformité</span></div></div>
       </article>
       <article class="work" data-cat="mkt">
         <div class="work-art"><img class="work-preview-img" src="images/i3.png" alt="Identité visuelle d'une marque" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><div class="work-art-fallback art-mkt" style="display:none"><svg class="ic ic-s"><use href="#i-mega"/></svg></div><a class="work-art-link" href="images/i3.png" target="_blank" rel="noopener" aria-label="Ouvrir l'image en grand : Identité visuelle d'une marque"></a></div>
@@ -1042,6 +1060,72 @@ const CONFIG = {
     addEventListener("resize", checkOverflow);
   });
 
+  // Lightbox : la fenêtre du carousel s'agrandit au clic, défilement continu à l'intérieur
+  const lightbox = document.createElement("div");
+  lightbox.className = "work-lightbox";
+  lightbox.hidden = true;
+  lightbox.innerHTML =
+    '<div class="work-lightbox-backdrop" data-lightbox-close></div>' +
+    '<div class="work-lightbox-inner">' +
+    '<button type="button" class="work-lightbox-close" data-lightbox-close aria-label="Fermer"><svg class="ic ic-s" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>' +
+    '<div class="work-lightbox-track"></div>' +
+    '<button type="button" class="work-lightbox-btn work-lightbox-prev" aria-label="Image précédente"><svg class="ic ic-s"><use href="#i-prev"/></svg></button>' +
+    '<button type="button" class="work-lightbox-btn work-lightbox-next" aria-label="Image suivante"><svg class="ic ic-s"><use href="#i-next"/></svg></button>' +
+    '<div class="work-lightbox-dots"></div>' +
+    '</div>';
+  document.body.appendChild(lightbox);
+
+  const lbTrack = $(".work-lightbox-track", lightbox);
+  const lbDotsWrap = $(".work-lightbox-dots", lightbox);
+  const LB_AUTOPLAY_MS = 3200;
+  let lbLinks = [], lbIndex = 0, lbTimer = null;
+
+  const lbGo = (n) => {
+    lbIndex = (n + lbLinks.length) % lbLinks.length;
+    lbTrack.scrollTo({ left: lbTrack.clientWidth * lbIndex, behavior: "smooth" });
+    $$(".work-lightbox-dot", lbDotsWrap).forEach((d, di) => d.setAttribute("aria-selected", di === lbIndex));
+  };
+  const lbStop = () => { if (lbTimer) clearInterval(lbTimer); lbTimer = null; };
+  const lbPlay = () => {
+    if (reduce || lbLinks.length < 2) return;
+    lbStop();
+    lbTimer = setInterval(() => lbGo(lbIndex + 1), LB_AUTOPLAY_MS);
+  };
+
+  const openLightbox = (links, startIndex) => {
+    lbLinks = links;
+    lbTrack.innerHTML = links.map(src => '<div class="work-lightbox-slide"><img src="' + src + '" alt=""></div>').join("");
+    lbDotsWrap.innerHTML = links.map((_, di) => '<button type="button" class="work-lightbox-dot" aria-selected="false" aria-label="Image ' + (di + 1) + '"></button>').join("");
+    $$(".work-lightbox-dot", lbDotsWrap).forEach((d, di) => d.addEventListener("click", () => { lbGo(di); lbPlay(); }));
+    lightbox.hidden = false;
+    document.body.style.overflow = "hidden";
+    requestAnimationFrame(() => {
+      lightbox.classList.add("open");
+      lbTrack.scrollLeft = lbTrack.clientWidth * startIndex;
+      lbIndex = startIndex;
+      $$(".work-lightbox-dot", lbDotsWrap).forEach((d, di) => d.setAttribute("aria-selected", di === lbIndex));
+      lbPlay();
+    });
+  };
+  const closeLightbox = () => {
+    lbStop();
+    lightbox.classList.remove("open");
+    document.body.style.overflow = "";
+    setTimeout(() => { lightbox.hidden = true; lbTrack.innerHTML = ""; }, 240);
+  };
+
+  $(".work-lightbox-prev", lightbox).addEventListener("click", () => { lbGo(lbIndex - 1); lbPlay(); });
+  $(".work-lightbox-next", lightbox).addEventListener("click", () => { lbGo(lbIndex + 1); lbPlay(); });
+  $$("[data-lightbox-close]", lightbox).forEach(el => el.addEventListener("click", closeLightbox));
+  lightbox.addEventListener("pointerenter", lbStop);
+  lightbox.addEventListener("pointerleave", lbPlay);
+  addEventListener("keydown", e => {
+    if (lightbox.hidden) return;
+    if (e.key === "Escape") closeLightbox();
+    if (e.key === "ArrowLeft") { lbGo(lbIndex - 1); lbPlay(); }
+    if (e.key === "ArrowRight") { lbGo(lbIndex + 1); lbPlay(); }
+  });
+
   $$("[data-carousel]").forEach(car => {
     const track = $(".work-carousel-track", car);
     const slides = $$(".work-carousel-slide", car);
@@ -1076,7 +1160,7 @@ const CONFIG = {
     dots.forEach((d, di) => d.addEventListener("click", (e) => { e.stopPropagation(); go(di); play(); }));
 
     track.addEventListener("click", () => {
-      window.open(links[i], "_blank", "noopener");
+      openLightbox(links, i);
     });
 
     car.addEventListener("pointerenter", stop);
