@@ -160,8 +160,49 @@ ul{list-style:none;padding:0}
 
 .experience-grid{position:relative;display:grid;gap:1.1rem;margin-top:2.4rem;padding-left:2rem}
 .experience-grid::before{content:"";position:absolute;left:.48rem;top:.65rem;bottom:.65rem;width:1px;background:linear-gradient(to bottom,transparent,#3b3b42 5%,#3b3b42 95%,transparent)}
-.experience-card{position:relative;display:grid;grid-template-columns:minmax(250px,.78fr) minmax(0,1.55fr) auto;gap:1.5rem;align-items:center;padding:1.45rem 1.35rem 1.45rem 1.55rem;background:linear-gradient(135deg,rgba(255,255,255,.025),rgba(255,255,255,.008));border:1px solid var(--line);border-radius:var(--r-lg);opacity:.48;transform:translateX(-18px) scale(.985);transition:opacity .45s ease,transform .55s cubic-bezier(.22,1,.36,1),border-color .3s ease,background .3s ease,box-shadow .3s ease}
-.experience-card::before{content:"";position:absolute;left:-2.02rem;top:50%;width:.7rem;height:.7rem;border-radius:50%;background:#3b3b42;box-shadow:0 0 0 5px var(--bg),0 0 0 6px #3b3b42;transform:translateY(-50%);transition:background .35s ease,box-shadow .35s ease,transform .35s ease}
+.experience-card{
+  position:relative;
+  display:grid;
+  grid-template-columns:minmax(0,.82fr) minmax(0,1.55fr) minmax(120px,max-content);
+  gap:1.5rem;
+  align-items:start;
+  min-width:0;
+  padding:1.45rem 1.35rem 1.45rem 1.55rem;
+  background:linear-gradient(135deg,rgba(255,255,255,.025),rgba(255,255,255,.008));
+  border:1px solid var(--line);
+  border-radius:var(--r-lg);
+  opacity:.48;
+  transform:translateX(-18px) scale(.985);
+  transition:opacity .45s ease,transform .55s cubic-bezier(.22,1,.36,1),border-color .3s ease,background .3s ease,box-shadow .3s ease;
+}
+  @media (min-width:901px){
+  .experience-card{
+    width:100%;
+  }
+
+  .experience-main{
+    padding-right:1rem;
+    border-right:1px solid var(--line);
+  }
+  }
+
+.experience-main,
+.experience-card > div:nth-child(2),
+.experience-link{
+  min-width:0;
+}
+
+.experience-role,
+.experience-company,
+.experience-summary{
+  overflow-wrap:anywhere;
+  word-break:normal;
+}
+
+.experience-link{
+  justify-self:end;
+  white-space:nowrap;
+}.experience-card::before{content:"";position:absolute;left:-2.02rem;top:50%;width:.7rem;height:.7rem;border-radius:50%;background:#3b3b42;box-shadow:0 0 0 5px var(--bg),0 0 0 6px #3b3b42;transform:translateY(-50%);transition:background .35s ease,box-shadow .35s ease,transform .35s ease}
 .experience-card.is-visible{opacity:.82;transform:translateX(0) scale(1)}
 .experience-card.is-active{opacity:1;transform:translateX(10px) scale(1.012);border-color:rgba(252,236,101,.62);background:linear-gradient(135deg,rgba(252,236,101,.075),rgba(255,255,255,.012));box-shadow:0 18px 50px rgba(0,0,0,.18),0 0 0 1px rgba(252,236,101,.08)}
 .experience-card.is-active::before{background:var(--accent);box-shadow:0 0 0 5px var(--accent-soft),0 0 22px rgba(252,236,101,.5);transform:translateY(-50%) scale(1.15)}
@@ -631,7 +672,7 @@ Réactif et amoureux du travail bien fait, je recommande Deen les yeux fermés !
         </figure>
         <figure class="q featured">
           <blockquote><p>J'ai eu le plaisir de travailler avec Nourou sur un projet de blog financier optimisé SEO et je peux affirmer qu'il s'agit d’une personne très talentueuse dans ce secteur. Tout au long de notre collaboration, Nourou a constamment fait preuve d'une adaptabilité et de créativité dans son approche. Il a été capable de prendre des concepts financiers complexes en main et de les synthétiser en un contenu facilement compréhensible et attrayant pour un large public. Enfin, Nourou possède également d'excellentes compétences en matière de communication, c’est un plaisir de travailler avec lui.</p></blockquote>
-          <figcaption><span class="avatar" aria-hidden="true">RT</span><span><strong>Rémi DE TRUCHIS DE VARENNES</strong><span>Co-founder of Coding Capital — Groupe technologique européen : logiciels, marchés de capitaux, allocation de capital | BFM Business</span></span></figcaption>
+          <figcaption><span class="avatar" aria-hidden="true">RT</span><span><strong>Rémi DE TRUCHIS DE VARENNES</strong><span>Co-founder of Coding Capital —BFM Business</span></span></figcaption>
         </figure>
         <figure class="q featured">
           <blockquote><p>Je recommande vivement Nourou-Deen DABINA en tant que rédacteur SEO. Il est un collaborateur fiable et compétent, prêt à répondre aux besoins spécifiques de chaque projet. Sa disponibilité, sa réactivité et son professionnalisme en font un choix judicieux pour tous vos besoins en rédaction de contenu optimisé SEO dans le domaine de la finance et du trading.</p></blockquote>
@@ -651,7 +692,7 @@ Réactif et amoureux du travail bien fait, je recommande Deen les yeux fermés !
         </figure>
         <figure class="q">
           <blockquote><p>Je recommande les yeux fermés, travail très professionnel, merci pour tout.</p></blockquote>
-          <figcaption><span class="avatar" aria-hidden="true">SC</span><span><strong>SM CONSTRUCTION</strong><span>Directrice</span></span></figcaption>
+          <figcaption><span class="avatar" aria-hidden="true">SC</span><span><strong>SM CONSTRUCTION</strong><span>Directeur</span></span></figcaption>
         </figure>
         <figure class="q">
           <blockquote><p>Réactif, précis et toujours disponible. Nous avons gagné un temps considérable sur nos réponses aux consultations.</p></blockquote>
@@ -699,7 +740,7 @@ Réactif et amoureux du travail bien fait, je recommande Deen les yeux fermés !
         </figure>
         <figure class="q featured">
           <blockquote><p>Je recommande vivement Nourou-Deen DABINA en tant que rédacteur SEO. Il est un collaborateur fiable et compétent, prêt à répondre aux besoins spécifiques de chaque projet. Sa disponibilité, sa réactivité et son professionnalisme en font un choix judicieux pour tous vos besoins en rédaction de contenu optimisé SEO dans le domaine de la finance et du trading.</p></blockquote>
-          <figcaption><span class="avatar" aria-hidden="true">CT</span><span><strong>Chloé T.</strong><span>Cheffe d’Équipe Expérience Client (CSM) | B2B SaaS | Leadership d’équipe &amp; Optimisation CX | Trilingue FR/ES/EN</span></span></figcaption>
+          <figcaption><span class="avatar" aria-hidden="true">CT</span><span><strong>Chloé T.</strong><span>Cheffe d’Équipe Expérience Client (CSM)</span></span></figcaption>
         </figure>
         <figure class="q">
           <blockquote><p>Je recommande vivement Nourou pour son accompagnement exceptionnel. Il a soutenu WA Africa dans l'ensemble de ses processus juridiques et contractuels avec une grande réactivité, une rapidité d'exécution remarquable et une expertise précieuse. Toujours disponible, il a su apporter des conseils avisés et adaptés à chaque situation, ce qui a permis d'avancer efficacement et en toute confiance. Un partenaire de confiance que je recommande sans hésitation.</p></blockquote>
