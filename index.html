@@ -209,8 +209,15 @@ ul{list-style:none;padding:0}
 .q-group{display:flex;align-items:flex-start;gap:var(--gap);flex:none}
 @keyframes q-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @media (prefers-reduced-motion:reduce){.q-track-wrap{overflow-x:auto}.q-track{animation:none}.q-dup{display:none}}
-.q{flex:0 0 340px;width:340px;display:flex;flex-direction:column;height:400px;padding:clamp(1.4rem,2.4vw,1.9rem);background:var(--panel);border:1px solid var(--line);border-radius:var(--r-lg);transition:height .25s ease}
+.q{flex:0 0 340px;width:340px;display:flex;flex-direction:column;height:400px;padding:clamp(1.4rem,2.4vw,1.9rem);background:var(--panel);border:2px solid var(--accent);border-radius:var(--r-lg);transition:height .25s ease;overflow:hidden;box-sizing:border-box}
 .q.expanded{height:auto}
+.q.featured{border:2px solid var(--accent);box-shadow:0 12px 30px rgba(252,236,101,.14);transform:translateY(-5px);background:#fffdf0}
+.q.featured blockquote::before{color:#b8971f}
+.q.featured p{color:#141414}
+.q.featured figcaption{border-top-color:#e7e5dd}
+.q.featured figcaption strong{color:#141414}
+.q.featured figcaption span span{color:#5a5a5f}
+.q.featured .avatar{background:#141414;color:var(--accent)}
 .q blockquote::before{content:"\201C";display:block;height:1.9rem;font:700 3.6rem/1 var(--serif);color:var(--accent)}
 .q p{overflow:hidden;font:500 1rem/1.7 var(--serif);display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical}
 .q.expanded p{overflow:visible;display:block;-webkit-line-clamp:unset}
@@ -219,8 +226,8 @@ ul{list-style:none;padding:0}
 .q-more.show{display:inline-block}
 .q figcaption{display:flex;align-items:center;gap:.9rem;margin-top:auto;padding-top:1.3rem;border-top:1px solid var(--line)}
 .avatar{display:grid;place-items:center;flex:none;width:48px;height:48px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-weight:700;font-size:.9rem}
-.q figcaption strong{display:block;line-height:1.3}
-.q figcaption span span{display:block;min-height:2.8em;color:var(--muted);font-size:.86rem;line-height:1.4}
+.q figcaption strong{display:block;line-height:1.3;overflow-wrap:anywhere;word-break:break-word}
+.q figcaption > span:last-child{min-width:0;overflow:hidden}.q figcaption span span{display:block;min-height:2.8em;color:var(--muted);font-size:.86rem;line-height:1.4;overflow-wrap:anywhere;word-break:break-word}
 
 .contact{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(2rem,6vw,5rem);align-items:start}
 .contact>*{min-width:0}
@@ -492,6 +499,78 @@ ul{list-style:none;padding:0}
 
       <article class="experience-card">
         <div class="experience-main">
+          <h3 class="experience-role">Rédacteur SEO spécialisé Finance, Blockchain &amp; iGaming</h3>
+          <p class="experience-company">BK SEO <span class="experience-type">Freelance</span></p>
+        </div>
+        <div>
+          <strong class="experience-metric">+3 000 articles</strong>
+          <p class="experience-summary">+30 000 € de chiffre d’affaires, rédaction de plus de 3 000 articles optimisés SEO et intégration de contenus sur des sites WordPress et Elementor.</p>
+        </div>
+        <span class="experience-link is-reference" aria-label="Lien vers le site non renseigné">Entreprise</span>
+      </article>
+
+      <article class="experience-card">
+        <div class="experience-main">
+          <h3 class="experience-role">Rédacteur Web SEO</h3>
+          <p class="experience-company">ParlonsLongTerme OÜ <span class="experience-type">Freelance</span></p>
+        </div>
+        <div>
+          <strong class="experience-metric">+10 000 € de CA</strong>
+          <p class="experience-summary">Rédaction d’articles de blog SEO spécialisés en finance, résumé et analyse de vidéos YouTube, ainsi qu’intégration et mise en ligne des contenus pour renforcer la visibilité digitale et la performance éditoriale.</p>
+        </div>
+        <span class="experience-link is-reference" aria-label="Lien vers le site non renseigné">Entreprise</span>
+      </article>
+
+      <article class="experience-card">
+        <div class="experience-main">
+          <h3 class="experience-role">Rédacteur SEO FinTech</h3>
+          <p class="experience-company">All-In Factory <span class="experience-type">Freelance</span></p>
+        </div>
+        <div>
+          <strong class="experience-metric">+2 500 € de CA</strong>
+          <p class="experience-summary">Rédaction d’articles et optimisation de contenus SEO sur des thématiques liées à la finance, la crypto, le trading et le Web3.</p>
+        </div>
+        <span class="experience-link is-reference" aria-label="Lien vers le site non renseigné">Entreprise</span>
+      </article>
+
+      <article class="experience-card">
+        <div class="experience-main">
+          <h3 class="experience-role">Freelance</h3>
+          <p class="experience-company">ComeUp <span class="experience-type">Freelance</span></p>
+        </div>
+        <div>
+          <strong class="experience-metric">374 ventes · 21 476,38 €</strong>
+          <p class="experience-summary">Depuis juillet 2021, réalisation de 374 ventes pour un chiffre d’affaires total de 21 476,38 €, avec 267 avis positifs et seulement 6 avis négatifs. Distinctions : Badge Top Vendeur, Vendeur Vérifié et Vendeur Professionnel, avec reconnaissance officielle pour une Excellente Performance.</p>
+        </div>
+        <span class="experience-link is-reference" aria-label="Lien vers le site non renseigné">Entreprise</span>
+      </article>
+
+      <article class="experience-card">
+        <div class="experience-main">
+          <h3 class="experience-role">Consultant Freelance</h3>
+          <p class="experience-company">SKYVIOO, FormIA, MakeMyOF, Les Compagnons du Drone <span class="experience-type">Freelance</span></p>
+        </div>
+        <div>
+          <strong class="experience-metric">Missions multi-structures</strong>
+          <p class="experience-summary">Gestion d’appels d’offres, community management et suivi administratif d’organismes de formation : Qualiopi, EDOF, NDA, CPF, OPCO, CertifPro, etc., avec contribution à la visibilité digitale et à la conformité réglementaire des structures accompagnées.</p>
+        </div>
+        <span class="experience-link is-reference" aria-label="Liens vers les sites non renseignés">Entreprises</span>
+      </article>
+
+      <article class="experience-card">
+        <div class="experience-main">
+          <h3 class="experience-role">Chargé d’Appels d’Offres et Marketing Digital</h3>
+          <p class="experience-company">SM CONSTRUCTION <span class="experience-type">Guyane Française</span></p>
+        </div>
+        <div>
+          <strong class="experience-metric">+50 dossiers · 100 % des délais</strong>
+          <p class="experience-summary">Analyse et traitement de plus de 50 dossiers publics et privés, rédaction et optimisation de mémoires techniques ayant permis de remporter plusieurs contrats en sous-traitance. Veille active avec +30 % d’opportunités identifiées et contribution au marketing digital, notamment en SEO.</p>
+        </div>
+        <span class="experience-link is-reference" aria-label="Lien vers le site non renseigné">Entreprise</span>
+      </article>
+
+      <article class="experience-card">
+        <div class="experience-main">
           <h3 class="experience-role">Chargé des Marchés Publics</h3>
           <p class="experience-company">DUMEZ CONSEILS <span class="experience-type">Freelance</span></p>
         </div>
@@ -556,6 +635,32 @@ ul{list-style:none;padding:0}
       <div class="q-track-wrap">
       <div class="q-track" id="qTrack">
         <div class="q-group">
+        <figure class="q featured">
+          <blockquote><p>Deen travail dans mon entreprise depuis maintenant quelques mois.C’est simple, il est un élément indispensable pour nous.
+             Appels d’offres, community management, administratif, il est ultra polyvalent.
+             Réactif et amoureux du travail bien fait, je recommande Deen les yeux fermés !</p></blockquote>
+          <figcaption><span class="avatar" aria-hidden="true">NE</span><span><strong>Nicolas ENGEL</strong><span>Entrepreneur — Formation professionnelle, plateformes &amp; modèles business</span></span></figcaption>
+        </figure>
+        <figure class="q featured">
+          <blockquote><p>Nourou-Deen est une personne respectueuse et fiable en termes de rédaction web. Notre collaboration, basée sur des missions ponctuelles, s'est très bien passée. Je le recommande vivement pour son professionnalisme, sa qualité de travail et sa capacité à respecter les délais. J'ajoute également qu'il est un professionnel à l'écoute doté d'un sens pointu du détail.</p></blockquote>
+          <figcaption><span class="avatar" aria-hidden="true">AD</span><span><strong>Amina Dambaba</strong><span>Consultante LinkedIn des Coachs &amp; Dirigeants</span></span></figcaption>
+        </figure>
+        <figure class="q featured">
+          <blockquote><p>Nourou Deen Dabina possesses an excellent work ethic, is punctual, communicates effectively, and follows instructions with precision. He is respectful towards team members and is a true asset to any organization. He consistently strives to deliver his best.</p></blockquote>
+          <figcaption><span class="avatar" aria-hidden="true">ZM</span><span><strong>Zakhi Mgutshini</strong><span>Accounts Clerk, Associate/Content Creator/Project Manager</span></span></figcaption>
+        </figure>
+        <figure class="q featured">
+          <blockquote><p>Nourou-Deen est l'une des meilleures personnes que j'ai eues la chance de former en Rédaction web SEO. C'est un professionnel acharné et très curieux. Il prend très au sérieux son travail et se démarque nettement pour son côté humain.</p></blockquote>
+          <figcaption><span class="avatar" aria-hidden="true">SM</span><span><strong>Serge Mahugnon</strong><span>Consultant Marketing digital 360°, Spécialiste en Référencement SEO &amp; Copywriting | IA génératives | Lead Manager — BSM groupe</span></span></figcaption>
+        </figure>
+        <figure class="q featured">
+          <blockquote><p>J'ai eu le plaisir de travailler avec Nourou sur un projet de blog financier optimisé SEO et je peux affirmer qu'il s'agit d’une personne très talentueuse dans ce secteur. Tout au long de notre collaboration, Nourou a constamment fait preuve d'une adaptabilité et de créativité dans son approche. Il a été capable de prendre des concepts financiers complexes en main et de les synthétiser en un contenu facilement compréhensible et attrayant pour un large public. Enfin, Nourou possède également d'excellentes compétences en matière de communication, c’est un plaisir de travailler avec lui.</p></blockquote>
+          <figcaption><span class="avatar" aria-hidden="true">RT</span><span><strong>Rémi DE TRUCHIS DE VARENNES</strong><span>Co-founder of Coding Capital — Groupe technologique européen : logiciels, marchés de capitaux, allocation de capital | BFM Business</span></span></figcaption>
+        </figure>
+        <figure class="q featured">
+          <blockquote><p>Je recommande vivement Nourou-Deen DABINA en tant que rédacteur SEO. Il est un collaborateur fiable et compétent, prêt à répondre aux besoins spécifiques de chaque projet. Sa disponibilité, sa réactivité et son professionnalisme en font un choix judicieux pour tous vos besoins en rédaction de contenu optimisé SEO dans le domaine de la finance et du trading.</p></blockquote>
+          <figcaption><span class="avatar" aria-hidden="true">CT</span><span><strong>Chloé T.</strong><span>Cheffe d’Équipe Expérience Client (CSM) | B2B SaaS | Leadership d’équipe &amp; Optimisation CX | Trilingue FR/ES/EN</span></span></figcaption>
+        </figure>
         <figure class="q">
           <blockquote><p>Je recommande vivement Nourou pour son accompagnement exceptionnel. Il a soutenu WA Africa dans l'ensemble de ses processus juridiques et contractuels avec une grande réactivité, une rapidité d'exécution remarquable et une expertise précieuse. Toujours disponible, il a su apporter des conseils avisés et adaptés à chaque situation, ce qui a permis d'avancer efficacement et en toute confiance. Un partenaire de confiance que je recommande sans hésitation.</p></blockquote>
           <figcaption><span class="avatar" aria-hidden="true">SP</span><span><strong>Salviane H. Pernelle</strong><span>WA Africa</span></span></figcaption>
@@ -570,16 +675,16 @@ ul{list-style:none;padding:0}
         </figure>
         <figure class="q">
           <blockquote><p>Je recommande les yeux fermés, travail très professionnel, merci pour tout.</p></blockquote>
-          <figcaption><span class="avatar" aria-hidden="true">SC</span><span><strong>SM CONSTRUCTION</strong><span>Directeur</span></span></figcaption>
+          <figcaption><span class="avatar" aria-hidden="true">SC</span><span><strong>SM CONSTRUCTION</strong><span>Directrice</span></span></figcaption>
         </figure>
         <figure class="q">
           <blockquote><p>Réactif, précis et toujours disponible. Nous avons gagné un temps considérable sur nos réponses aux consultations.</p></blockquote>
           <figcaption><span class="avatar" aria-hidden="true">PN</span><span><strong>Client PN</strong><span>Responsable administratif</span></span></figcaption>
         </figure>
         <figure class="q">
-          <blockquote><p>"Bonjour, Cela fait un moment que je fais appel à ses services, même si des ajustements de planning ont régulièrement décalé nos collaborations.
-            Pour mes travaux juridiques, j'avais la conviction qu'il était le bon interlocuteur — et j'ai tout de même pris le temps de comparer avec d'autres prestataires avant de me décider.
-            Le résultat est à la hauteur de mes attentes : mes documents juridiques obligatoires sont désormais complets et opérationnels. Une base solide pour démarrer sereinement, avec la protection nécessaire pour moi comme pour mes clients.
+          <blockquote><p>"Bonjour, Cela fait un moment que je fais appel à ses services, même si des ajustements de planning ont régulièrement décalé nos collaborations.<p>
+            <p>Pour mes travaux juridiques, j'avais la conviction qu'il était le bon interlocuteur — et j'ai tout de même pris le temps de comparer avec d'autres prestataires avant de me décider.</p>
+           <p>Le résultat est à la hauteur de mes attentes : mes documents juridiques obligatoires sont désormais complets et opérationnels. Une base solide pour démarrer sereinement, avec la protection nécessaire pour moi comme pour mes clients.
             Merci encore, et à très bientôt pour de nouveaux projets.</p></blockquote>
           <figcaption><span class="avatar" aria-hidden="true">KY</span><span><strong>Kevin Yogami</strong><span>Responsable administratif</span></span></figcaption>
         </figure>
@@ -592,7 +697,34 @@ ul{list-style:none;padding:0}
           <figcaption><span class="avatar" aria-hidden="true">LI</span><span><strong>LENA IT</strong><span>Directrice</span></span></figcaption>
         </figure>
         </div>
-        <div class="q-group q-dup" aria-hidden="true">
+        <div class="q-group q-dup"
+        <figure class="q featured">
+          <blockquote><p>Deen travail dans mon entreprise depuis maintenant quelques mois.
+            C’est simple, il est un élément indispensable pour nous.
+            <p>Appels d’offres, community management, administratif, il est ultra polyvalent.</p>
+            <p>Réactif et amoureux du travail bien fait, je recommande Deen les yeux fermés !</p></blockquote>
+          <figcaption><span class="avatar" aria-hidden="true">NE</span><span><strong>Nicolas ENGEL</strong><span>Entrepreneur — Formation professionnelle, plateformes &amp; modèles business</span></span></figcaption>
+        </figure>
+        <figure class="q featured">
+          <blockquote><p>Nourou-Deen est une personne respectueuse et fiable en termes de rédaction web. Notre collaboration, basée sur des missions ponctuelles, s'est très bien passée. Je le recommande vivement pour son professionnalisme, sa qualité de travail et sa capacité à respecter les délais. J'ajoute également qu'il est un professionnel à l'écoute doté d'un sens pointu du détail.</p></blockquote>
+          <figcaption><span class="avatar" aria-hidden="true">AD</span><span><strong>Amina Dambaba</strong><span>Consultante LinkedIn des Coachs &amp; Dirigeants</span></span></figcaption>
+        </figure>
+        <figure class="q featured">
+          <blockquote><p>Nourou Deen Dabina possesses an excellent work ethic, is punctual, communicates effectively, and follows instructions with precision. He is respectful towards team members and is a true asset to any organization. He consistently strives to deliver his best.</p></blockquote>
+          <figcaption><span class="avatar" aria-hidden="true">ZM</span><span><strong>Zakhi Mgutshini</strong><span>Accounts Clerk, Associate/Content Creator/Project Manager</span></span></figcaption>
+        </figure>
+        <figure class="q featured">
+          <blockquote><p>Nourou-Deen est l'une des meilleures personnes que j'ai eues la chance de former en Rédaction web SEO. C'est un professionnel acharné et très curieux. Il prend très au sérieux son travail et se démarque nettement pour son côté humain.</p></blockquote>
+          <figcaption><span class="avatar" aria-hidden="true">SM</span><span><strong>Serge Mahugnon</strong><span>Consultant Marketing digital 360°, Spécialiste en Référencement SEO &amp; Copywriting | IA génératives | Lead Manager — BSM groupe</span></span></figcaption>
+        </figure>
+        <figure class="q featured">
+          <blockquote><p>J'ai eu le plaisir de travailler avec Nourou sur un projet de blog financier optimisé SEO et je peux affirmer qu'il s'agit d’une personne très talentueuse dans ce secteur. Tout au long de notre collaboration, Nourou a constamment fait preuve d'une adaptabilité et de créativité dans son approche. Il a été capable de prendre des concepts financiers complexes en main et de les synthétiser en un contenu facilement compréhensible et attrayant pour un large public. Enfin, Nourou possède également d'excellentes compétences en matière de communication, c’est un plaisir de travailler avec lui.</p></blockquote>
+          <figcaption><span class="avatar" aria-hidden="true">RT</span><span><strong>Rémi DE TRUCHIS DE VARENNES</strong><span>Co-founder of Coding Capital — Groupe technologique européen : logiciels, marchés de capitaux, allocation de capital | BFM Business</span></span></figcaption>
+        </figure>
+        <figure class="q featured">
+          <blockquote><p>Je recommande vivement Nourou-Deen DABINA en tant que rédacteur SEO. Il est un collaborateur fiable et compétent, prêt à répondre aux besoins spécifiques de chaque projet. Sa disponibilité, sa réactivité et son professionnalisme en font un choix judicieux pour tous vos besoins en rédaction de contenu optimisé SEO dans le domaine de la finance et du trading.</p></blockquote>
+          <figcaption><span class="avatar" aria-hidden="true">CT</span><span><strong>Chloé T.</strong><span>Cheffe d’Équipe Expérience Client (CSM) | B2B SaaS | Leadership d’équipe &amp; Optimisation CX | Trilingue FR/ES/EN</span></span></figcaption>
+        </figure>
         <figure class="q">
           <blockquote><p>Je recommande vivement Nourou pour son accompagnement exceptionnel. Il a soutenu WA Africa dans l'ensemble de ses processus juridiques et contractuels avec une grande réactivité, une rapidité d'exécution remarquable et une expertise précieuse. Toujours disponible, il a su apporter des conseils avisés et adaptés à chaque situation, ce qui a permis d'avancer efficacement et en toute confiance. Un partenaire de confiance que je recommande sans hésitation.</p></blockquote>
           <figcaption><span class="avatar" aria-hidden="true">SP</span><span><strong>Salviane H. Pernelle</strong><span>WA Africa</span></span></figcaption>
