@@ -167,13 +167,14 @@ ul{list-style:none;padding:0}
   gap:1.5rem;
   align-items:start;
   min-width:0;
+  width:100%;
   padding:1.45rem 1.35rem 1.45rem 1.55rem;
   background:linear-gradient(135deg,rgba(255,255,255,.025),rgba(255,255,255,.008));
   border:1px solid var(--line);
   border-radius:var(--r-lg);
-  opacity:.48;
-  transform:translateX(-18px) scale(.985);
-  transition:opacity .45s ease,transform .55s cubic-bezier(.22,1,.36,1),border-color .3s ease,background .3s ease,box-shadow .3s ease;
+  opacity:1;
+  transform:none;
+  transition:border-color .3s ease,background .3s ease,box-shadow .3s ease;
 }
   @media (min-width:901px){
   .experience-card{
@@ -203,10 +204,27 @@ ul{list-style:none;padding:0}
   justify-self:end;
   white-space:nowrap;
 }.experience-card::before{content:"";position:absolute;left:-2.02rem;top:50%;width:.7rem;height:.7rem;border-radius:50%;background:#3b3b42;box-shadow:0 0 0 5px var(--bg),0 0 0 6px #3b3b42;transform:translateY(-50%);transition:background .35s ease,box-shadow .35s ease,transform .35s ease}
-.experience-card.is-visible{opacity:.82;transform:translateX(0) scale(1)}
-.experience-card.is-active{opacity:1;transform:translateX(10px) scale(1.012);border-color:rgba(252,236,101,.62);background:linear-gradient(135deg,rgba(252,236,101,.075),rgba(255,255,255,.012));box-shadow:0 18px 50px rgba(0,0,0,.18),0 0 0 1px rgba(252,236,101,.08)}
-.experience-card.is-active::before{background:var(--accent);box-shadow:0 0 0 5px var(--accent-soft),0 0 22px rgba(252,236,101,.5);transform:translateY(-50%) scale(1.15)}
-.experience-card:hover{transform:translateX(10px) scale(1.012);border-color:rgba(252,236,101,.62);background:linear-gradient(135deg,rgba(252,236,101,.075),rgba(255,255,255,.012))}
+.experience-card.is-visible{
+  opacity:1;
+  transform:none;
+}
+.experience-card.is-active{
+  opacity:1;
+  transform:none;
+  border-color:var(--line);
+  background:linear-gradient(135deg,rgba(255,255,255,.025),rgba(255,255,255,.008));
+  box-shadow:none;
+}
+.experience-card.is-active::before{
+  background:#3b3b42;
+  box-shadow:0 0 0 5px var(--bg),0 0 0 6px #3b3b42;
+  transform:translateY(-50%);
+}
+.experience-card:hover{
+  transform:none;
+  border-color:rgba(252,236,101,.5);
+  background:linear-gradient(135deg,rgba(252,236,101,.045),rgba(255,255,255,.012));
+}
 .experience-main{min-width:0;padding-right:1.2rem;border-right:1px solid var(--line)}
 .experience-role{margin:0;font:700 clamp(1.05rem,1.5vw,1.3rem)/1.25 var(--serif);letter-spacing:-.01em}
 .experience-company{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;margin-top:.55rem;color:var(--accent);font-weight:700;font-size:.94rem}
@@ -478,8 +496,7 @@ ul{list-style:none;padding:0}
     </div>
 
     <div class="experience-grid">
-      <article class="experience-card">
-        <div class="experience-main">
+      <article class="experience-card"><div class="experience-main">
           <h3 class="experience-role">French Expert SEO &amp; Translation</h3>
           <p class="experience-company">TransPerfect <span class="experience-type">Freelance</span></p>
         </div>
@@ -490,8 +507,7 @@ ul{list-style:none;padding:0}
         <a class="experience-link" href="https://www.transperfect.com/" target="_blank" rel="noopener noreferrer">Visiter le site&nbsp;↗</a>
       </article>
 
-      <article class="experience-card">
-        <div class="experience-main">
+      <article class="experience-card"><div class="experience-main">
           <h3 class="experience-role">Gestion d’Appels d’Offres &amp; Marketing Digital</h3>
           <p class="experience-company">Euro Market Digital <span class="experience-type">Indépendant</span></p>
         </div>
@@ -502,8 +518,7 @@ ul{list-style:none;padding:0}
         <a class="experience-link" href="https://euromarketdigital.net/" target="_blank" rel="noopener noreferrer">Visiter le site&nbsp;↗</a>
       </article>
 
-      <article class="experience-card">
-        <div class="experience-main">
+      <article class="experience-card"><div class="experience-main">
           <h3 class="experience-role">French SEO Editor — Blogs FR</h3>
           <p class="experience-company">Webcertain <span class="experience-type">Freelance</span></p>
         </div>
@@ -512,9 +527,9 @@ ul{list-style:none;padding:0}
           <p class="experience-summary">Rédaction et optimisation SEO, recherche de mots-clés, métadonnées et optimisation de contenus longs pour des marques internationales.</p>
         </div>
         <a class="experience-link" href="https://www.transperfectdigital.com/" target="_blank" rel="noopener noreferrer">Visiter le site&nbsp;↗</a>
-      
-      <article class="experience-card">
-        <div class="experience-main">
+      </article>
+
+      <article class="experience-card"><div class="experience-main">
           <h3 class="experience-role">Rédacteur Web SEO</h3>
           <p class="experience-company">ParlonsLongTerme OÜ <span class="experience-type">Freelance</span></p>
         </div>
@@ -525,8 +540,7 @@ ul{list-style:none;padding:0}
         <span class="experience-link is-reference" aria-label="Lien vers le site non renseigné">Entreprise</span>
       </article>
 
-      <article class="experience-card">
-        <div class="experience-main">
+      <article class="experience-card"><div class="experience-main">
           <h3 class="experience-role">Rédacteur SEO FinTech</h3>
           <p class="experience-company">All-In Factory <span class="experience-type">Freelance</span></p>
         </div>
@@ -537,8 +551,7 @@ ul{list-style:none;padding:0}
         <span class="experience-link is-reference" aria-label="Lien vers le site non renseigné">Entreprise</span>
       </article>
 
-      <article class="experience-card">
-        <div class="experience-main">
+      <article class="experience-card"><div class="experience-main">
           <h3 class="experience-role">Freelance</h3>
           <p class="experience-company">ComeUp <span class="experience-type">Freelance</span></p>
         </div>
@@ -549,8 +562,7 @@ ul{list-style:none;padding:0}
         <span class="experience-link is-reference" aria-label="Lien vers le site non renseigné">Entreprise</span>
       </article>
 
-      <article class="experience-card">
-        <div class="experience-main">
+      <article class="experience-card"><div class="experience-main">
           <h3 class="experience-role">Consultant Freelance</h3>
           <p class="experience-company">SKYVIOO, FormIA, MakeMyOF, Les Compagnons du Drone <span class="experience-type">Freelance</span></p>
         </div>
@@ -561,8 +573,7 @@ ul{list-style:none;padding:0}
         <span class="experience-link is-reference" aria-label="Liens vers les sites non renseignés">Entreprises</span>
       </article>
 
-      <article class="experience-card">
-        <div class="experience-main">
+      <article class="experience-card"><div class="experience-main">
           <h3 class="experience-role">Chargé d’Appels d’Offres et Marketing Digital</h3>
           <p class="experience-company">SM CONSTRUCTION <span class="experience-type">Guyane Française</span></p>
         </div>
@@ -573,8 +584,7 @@ ul{list-style:none;padding:0}
         <span class="experience-link is-reference" aria-label="Lien vers le site non renseigné">Entreprise</span>
       </article>
 
-      <article class="experience-card">
-        <div class="experience-main">
+      <article class="experience-card"><div class="experience-main">
           <h3 class="experience-role">Chargé des Marchés Publics</h3>
           <p class="experience-company">DUMEZ CONSEILS <span class="experience-type">Freelance</span></p>
         </div>
@@ -585,8 +595,7 @@ ul{list-style:none;padding:0}
         <a class="experience-link is-reference" href="https://www.francenum.gouv.fr/activateurs/dumez-conseils" target="_blank" rel="noopener noreferrer">Voir la fiche&nbsp;↗</a>
       </article>
 
-      <article class="experience-card">
-        <div class="experience-main">
+      <article class="experience-card"><div class="experience-main">
           <h3 class="experience-role">Responsable Technique et Juridique (Marchés Publics)</h3>
           <p class="experience-company">AMAZONIE TERRASSEMENT <span class="experience-type">Collaboration</span></p>
         </div>
@@ -599,7 +608,6 @@ ul{list-style:none;padding:0}
     </div>
   </div>
 </section>
-
 <section class="section section-orange" id="realisations">
   <div class="wrap">
     <div class="head">
@@ -1024,4 +1032,4 @@ const CONFIG = {
 </script>
 
 </body>
-</html>
+        </html>
