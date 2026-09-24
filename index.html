@@ -258,30 +258,25 @@ ul{list-style:none;padding:0}
 .work-foot{display:flex;align-items:center;justify-content:space-between;gap:.75rem;margin-top:auto}
 .tag{align-self:flex-start;padding:.25rem .75rem;border-radius:99px;background:var(--accent-soft);color:var(--accent);font-size:.8rem;font-weight:700}
 .work-pdf{display:inline-flex;align-items:center;gap:.35rem;color:var(--accent);font:700 .82rem var(--sans);white-space:nowrap}
-.work-carousel{position:relative}
-.carousel-track{display:flex;width:100%;height:100%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none}
-.carousel-track::-webkit-scrollbar{display:none}
-.carousel-slide{flex:0 0 100%;scroll-snap-align:start;height:100%}
-.carousel-slide img{width:100%;height:100%;object-fit:cover;display:block}
-.carousel-nav{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:36px;border:1px solid rgba(255,255,255,.3);border-radius:50%;background:rgba(0,0,0,.55);color:#fff;font-size:1.3rem;line-height:1;display:grid;place-items:center;cursor:pointer;z-index:2;transition:background .2s,border-color .2s}
-.carousel-nav:hover{background:rgba(0,0,0,.85);border-color:var(--accent)}
-.carousel-nav.prev{left:.6rem}
-.carousel-nav.next{right:.6rem}
-.carousel-dots{position:absolute;left:0;right:0;bottom:.6rem;display:flex;justify-content:center;gap:.4rem;z-index:2}
-.carousel-dots button{width:7px;height:7px;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.45);cursor:pointer;transition:background .2s,transform .2s}
-.carousel-dots button[aria-current="true"]{background:var(--accent);transform:scale(1.35)}
-.lightbox{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.92);display:flex;align-items:center;justify-content:center;padding:clamp(1rem,5vw,3rem)}
-.lightbox[hidden]{display:none}
-.lightbox-img{max-width:min(92vw,1100px);max-height:88vh;object-fit:contain;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.55)}
-.lightbox-close,.lightbox-nav{position:absolute;border:1px solid rgba(255,255,255,.3);border-radius:50%;background:rgba(0,0,0,.55);color:#fff;display:grid;place-items:center;cursor:pointer;transition:background .2s,border-color .2s,color .2s}
-.lightbox-close:hover,.lightbox-nav:hover{background:rgba(0,0,0,.85);border-color:var(--accent);color:var(--accent)}
-.lightbox-close{top:1.1rem;right:1.1rem;width:42px;height:42px;font-size:1.15rem}
-.lightbox-nav{top:50%;transform:translateY(-50%);width:48px;height:48px;font-size:1.7rem;line-height:1}
-.lightbox-prev{left:1.1rem}
-.lightbox-next{right:1.1rem}
-@media (max-width:640px){.lightbox-nav{width:40px;height:40px}.lightbox-prev{left:.5rem}.lightbox-next{right:.5rem}}
 .work-pdf .ic{width:16px;height:16px}
 .work-pdf:hover{text-decoration:underline}
+
+.work-art-carousel{padding:0}
+.work-carousel{position:relative;width:100%;height:100%}
+.work-carousel-track{display:flex;width:100%;height:100%;overflow-x:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;cursor:zoom-in}
+.work-carousel-slide{position:relative;flex:0 0 100%;width:100%;height:100%;scroll-snap-align:start;list-style:none}
+.work-carousel-slide .work-preview-img{width:100%;height:100%;object-fit:cover;display:block}
+.work-carousel-btn{position:absolute;top:50%;translate:0 -50%;width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.35);background:rgba(0,0,0,.5);color:#fff;display:grid;place-items:center;cursor:pointer;z-index:2;transition:background .2s,border-color .2s}
+.work-carousel-btn:hover{background:rgba(0,0,0,.75);border-color:var(--accent)}
+.work-carousel-btn .ic{width:18px;height:18px}
+.work-carousel-prev{left:.6rem}
+.work-carousel-next{right:.6rem}
+.work-carousel-dots{position:absolute;left:0;right:0;bottom:.6rem;display:flex;justify-content:center;gap:.4rem;z-index:2}
+.work-carousel-dot{width:8px;height:8px;padding:0;border-radius:50%;border:1px solid rgba(255,255,255,.6);background:rgba(255,255,255,.35);cursor:pointer}
+.work-carousel-dot[aria-selected="true"]{background:var(--accent);border-color:var(--accent)}
+.work-carousel-open{position:absolute;right:.6rem;top:.6rem;width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.35);color:#fff;display:grid;place-items:center;z-index:2;transition:background .2s,border-color .2s}
+.work-carousel-open:hover{background:rgba(0,0,0,.75);border-color:var(--accent)}
+.work-carousel-open .ic{width:16px;height:16px}
 
 .quotes{--gap:1.25rem}
 .q-track-wrap{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent);mask-image:linear-gradient(90deg,transparent,#000 3%,#000 97%,transparent)}
@@ -646,11 +641,15 @@ ul{list-style:none;padding:0}
     <div class="works">
       <article class="work" data-cat="ao">
         <div class="work-art"><object class="work-preview" data="fichier/Memoire_technique_SM_CONSTRUCTION_P26-023.pdf#page=1&view=FitH&toolbar=0&navpanes=0" type="application/pdf"><div class="work-art-fallback art-ao"><svg class="ic ic-s"><use href="#i-file"/></svg></div></object></div>
-        <div class="work-info"><h3>Mémoire Technique</h3><p></p><div class="work-foot"><span class="tag">Appels d'offres</span></div></div>
+        <div class="work-info"><h3>Mémoire Technique de SM CONSTRUCTION</h3><p></p><div class="work-foot"><span class="tag">Appels d'offres</span></div></div>
       </article>
       <article class="work" data-cat="jur">
         <div class="work-art"><object class="work-preview" data="fichier/26-023_MEMOIRE_TECHNIQUE_DJ_AMAZONIE_CONSTRUCTIONS.pdf#page=1&view=FitH&toolbar=0&navpanes=0" type="application/pdf"><div class="work-art-fallback art-jur"><svg class="ic ic-s"><use href="#i-scale"/></svg></div></object></div>
-        <div class="work-info"><h3>Mémoire Technique</h3><p></p><div class="work-foot"><span class="tag">Juridique et conformité</span></div></div>
+        <div class="work-info"><h3>Mémoire Technique de DJ AMAZONIE</h3><p></p><div class="work-foot"><span class="tag">Juridique et conformité</span></div></div>
+      </article>
+      <article class="work" data-cat="mkt">
+        <div class="work-art"><img class="work-preview-img" src="images/i3.png" alt="Identité visuelle d'une marque" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><div class="work-art-fallback art-mkt" style="display:none"><svg class="ic ic-s"><use href="#i-mega"/></svg></div><a class="work-art-link" href="images/i3.png" target="_blank" rel="noopener" aria-label="Ouvrir l'image en grand : Identité visuelle d'une marque"></a></div>
+        <div class="work-info"><h3>Charte graphique pour Aurélion </h3><p>  </p><div class="work-foot"><span class="tag">Marketing numérique</span><a class="work-pdf" href="ar.pdf" target="_blank" rel="noopener" aria-label="Voir le pdf"><svg class="ic ic-s"><use href="#i-file"/></svg>Voir l'image</a></div></div>
       </article>
       <article class="work" data-cat="ao">
         <div class="work-art"><object class="work-preview" data="fichier/Memoire_technique_SM_CONSTRUCTION_P26-023.pdf#page=1&view=FitH&toolbar=0&navpanes=0" type="application/pdf"><div class="work-art-fallback art-ao"><svg class="ic ic-s"><use href="#i-file"/></svg></div></object></div>
@@ -661,19 +660,27 @@ ul{list-style:none;padding:0}
         <div class="work-info"><h3>Rédaction de contrats types</h3><p> </p><div class="work-foot"><span class="tag">Juridique et conformité</span></div></div>
       </article>
       <article class="work" data-cat="mkt">
-        <div class="work-art work-carousel">
-          <div class="carousel-track">
-            <div class="carousel-slide"><a class="carousel-open" href="images/i3.png" aria-label="Agrandir : Charte graphique pour Aurélion"><img class="work-preview-img" src="images/i3.png" alt="Charte graphique pour Aurélion" loading="lazy"></a></div>
-            <div class="carousel-slide"><a class="carousel-open" href="cgp.png" aria-label="Agrandir : Charte graphique pour ATLANTIUM"><img class="work-preview-img" src="cgp.png" alt="Charte graphique pour ATLANTIUM" loading="lazy"></a></div>
-            <div class="carousel-slide"><a class="carousel-open" href="images/i1.png" aria-label="Agrandir : Affiche de communication"><img class="work-preview-img" src="images/i1.png" alt="Affiche de communication" loading="lazy"></a></div>
-            <div class="carousel-slide"><a class="carousel-open" href="images/i2.png" aria-label="Agrandir : Affiche de communication"><img class="work-preview-img" src="images/i2.png" alt="Affiche de communication" loading="lazy"></a></div>
-            <div class="carousel-slide"><a class="carousel-open" href="images/i.png" aria-label="Agrandir : Affiche de communication"><img class="work-preview-img" src="images/i.png" alt="Affiche de communication" loading="lazy"></a></div>
+        <div class="work-art"><img class="work-preview-img" src="cgp.png" alt="Calendrier de publications réseaux sociaux" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><div class="work-art-fallback art-mkt" style="display:none"><svg class="ic ic-s"><use href="#i-mega"/></svg></div><a class="work-art-link" href="cgp.png" target="_blank" rel="noopener" aria-label="Ouvrir l'image en grand : Calendrier de publications réseaux sociaux"></a></div>
+        <div class="work-info"><h3>Charte graphique pour ATLANTIUM</h3><p></p><div class="work-foot"><span class="tag">Marketing numérique</span><a class="work-pdf" href="at.pdf" target="_blank" rel="noopener" aria-label="voir pdf"><svg class="ic ic-s"><use href="#i-file"/></svg>Voir l'image</a></div></div>
+      </article>
+      <article class="work" data-cat="mkt">
+        <div class="work-art work-art-carousel">
+          <div class="work-carousel" data-carousel>
+            <ul class="work-carousel-track">
+              <li class="work-carousel-slide"><img class="work-preview-img" src="images/i1.png" alt="Affiche de communication 1" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><div class="work-art-fallback art-mkt" style="display:none"><svg class="ic ic-s"><use href="#i-mega"/></svg></div></li>
+              <li class="work-carousel-slide"><img class="work-preview-img" src="images/i2.png" alt="Affiche de communication 2" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><div class="work-art-fallback art-mkt" style="display:none"><svg class="ic ic-s"><use href="#i-mega"/></svg></div></li>
+              <li class="work-carousel-slide"><img class="work-preview-img" src="images/i.png" alt="Affiche de communication 3" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><div class="work-art-fallback art-mkt" style="display:none"><svg class="ic ic-s"><use href="#i-mega"/></svg></div></li>
+            </ul>
+            <button type="button" class="work-carousel-btn work-carousel-prev" aria-label="Image précédente"><svg class="ic ic-s"><use href="#i-prev"/></svg></button>
+            <button type="button" class="work-carousel-btn work-carousel-next" aria-label="Image suivante"><svg class="ic ic-s"><use href="#i-next"/></svg></button>
+            <div class="work-carousel-dots" role="tablist" aria-label="Choisir une affiche">
+              <button type="button" class="work-carousel-dot" aria-selected="true" aria-label="Affiche 1"></button>
+              <button type="button" class="work-carousel-dot" aria-selected="false" aria-label="Affiche 2"></button>
+              <button type="button" class="work-carousel-dot" aria-selected="false" aria-label="Affiche 3"></button>
+            </div>
           </div>
-          <button type="button" class="carousel-nav prev" aria-label="Image précédente">‹</button>
-          <button type="button" class="carousel-nav next" aria-label="Image suivante">›</button>
-          <div class="carousel-dots" role="tablist" aria-label="Choisir une image"></div>
         </div>
-        <div class="work-info"><h3>Chartes graphiques &amp; supports de communication</h3><p>Identité visuelle, chartes graphiques et affiches réalisées pour plusieurs clients.</p><div class="work-foot"><span class="tag">Marketing numérique</span></div></div>
+        <div class="work-info"><h3>Affiches de communication</h3><p></p><div class="work-foot"><span class="tag">Marketing numérique</span></div></div>
       </article>
     </div>
   </div>
@@ -879,13 +886,6 @@ Réactif et amoureux du travail bien fait, je recommande Deen les yeux fermés !
   <span class="wa-tip">Écrire sur WhatsApp</span>
 </a>
 
-<div class="lightbox" id="lightbox" hidden>
-  <button type="button" class="lightbox-close" aria-label="Fermer">✕</button>
-  <button type="button" class="lightbox-nav lightbox-prev" aria-label="Image précédente">‹</button>
-  <img class="lightbox-img" src="" alt="">
-  <button type="button" class="lightbox-nav lightbox-next" aria-label="Image suivante">›</button>
-</div>
-
 <script>
 const CONFIG = {
   prenom: "Nourou Deen",
@@ -960,99 +960,6 @@ const CONFIG = {
   }, { rootMargin: "-45% 0px -50% 0px" });
 
   $$("main section[id]").forEach(s => io.observe(s));
-
-  const lightbox = $("#lightbox");
-  const lightboxImg = $(".lightbox-img", lightbox);
-  let lbSlides = [], lbIndex = 0;
-
-  const updateLightbox = () => {
-    const img = $("img", lbSlides[lbIndex]);
-    lightboxImg.src = img.src;
-    lightboxImg.alt = img.alt;
-  };
-  const openLightbox = (slides, i) => {
-    lbSlides = slides; lbIndex = i;
-    updateLightbox();
-    lightbox.hidden = false;
-    document.documentElement.style.overflow = "hidden";
-  };
-  const closeLightbox = () => {
-    lightbox.hidden = true;
-    document.documentElement.style.overflow = "";
-  };
-  const lbStep = (dir) => { lbIndex = (lbIndex + dir + lbSlides.length) % lbSlides.length; updateLightbox(); };
-
-  $(".lightbox-close", lightbox).addEventListener("click", closeLightbox);
-  $(".lightbox-prev", lightbox).addEventListener("click", () => lbStep(-1));
-  $(".lightbox-next", lightbox).addEventListener("click", () => lbStep(1));
-  lightbox.addEventListener("click", e => { if (e.target === lightbox) closeLightbox(); });
-  addEventListener("keydown", e => {
-    if (lightbox.hidden) return;
-    if (e.key === "Escape") closeLightbox();
-    if (e.key === "ArrowLeft") lbStep(-1);
-    if (e.key === "ArrowRight") lbStep(1);
-  });
-
-  const prefersReduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  $$(".work-carousel").forEach(car => {
-    const track = $(".carousel-track", car);
-    const slides = $$(".carousel-slide", track);
-    const dotsWrap = $(".carousel-dots", car);
-    const prevBtn = $(".carousel-nav.prev", car);
-    const nextBtn = $(".carousel-nav.next", car);
-    const multi = slides.length > 1;
-    if (!multi) { if (prevBtn) prevBtn.hidden = true; if (nextBtn) nextBtn.hidden = true; }
-
-    let dots = [];
-    if (multi) {
-      slides.forEach((_, i) => {
-        const dot = document.createElement("button");
-        dot.type = "button";
-        dot.setAttribute("aria-label", "Image " + (i + 1) + " sur " + slides.length);
-        if (i === 0) dot.setAttribute("aria-current", "true");
-        dot.addEventListener("click", () => slides[i].scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" }));
-        dotsWrap.appendChild(dot);
-      });
-      dots = $$("button", dotsWrap);
-
-      const dio = new IntersectionObserver(entries => {
-        entries.forEach(en => {
-          if (!en.isIntersecting) return;
-          const i = slides.indexOf(en.target);
-          dots.forEach((d, j) => j === i ? d.setAttribute("aria-current", "true") : d.removeAttribute("aria-current"));
-        });
-      }, { root: track, threshold: .6 });
-      slides.forEach(s => dio.observe(s));
-    }
-
-    const step = (dir) => {
-      const w = track.clientWidth;
-      const atEnd = dir > 0 && track.scrollLeft + w >= track.scrollWidth - 4;
-      const atStart = dir < 0 && track.scrollLeft <= 4;
-      const target = atEnd ? 0 : atStart ? track.scrollWidth : track.scrollLeft + dir * w;
-      track.scrollTo({ left: target, behavior: "smooth" });
-    };
-    if (prevBtn) prevBtn.addEventListener("click", () => step(-1));
-    if (nextBtn) nextBtn.addEventListener("click", () => step(1));
-
-    $$(".carousel-open", track).forEach((link, i) => {
-      link.addEventListener("click", e => {
-        e.preventDefault();
-        openLightbox(slides, i);
-      });
-    });
-
-    if (multi && !prefersReduced) {
-      let timer = setInterval(() => step(1), 3200);
-      const stop = () => clearInterval(timer);
-      const start = () => { clearInterval(timer); timer = setInterval(() => step(1), 3200); };
-      car.addEventListener("pointerenter", stop);
-      car.addEventListener("pointerleave", start);
-      car.addEventListener("focusin", stop);
-      car.addEventListener("focusout", start);
-    }
-  });
 
   const chips = $$(".chip"), works = $$(".work");
 
@@ -1133,6 +1040,67 @@ const CONFIG = {
 
     checkOverflow();
     addEventListener("resize", checkOverflow);
+  });
+
+  $$("[data-carousel]").forEach(car => {
+    const track = $(".work-carousel-track", car);
+    const slides = $$(".work-carousel-slide", car);
+    const prev = $(".work-carousel-prev", car);
+    const next = $(".work-carousel-next", car);
+    const dots = $$(".work-carousel-dot", car);
+    const openLink = $("[data-carousel-link]", car);
+    const links = slides.map(s => s.querySelector("img")?.getAttribute("src") || "#");
+    let i = 0;
+    let timer = null;
+    const AUTOPLAY_MS = 3200;
+
+    const go = (n) => {
+      i = (n + slides.length) % slides.length;
+      track.scrollTo({ left: track.clientWidth * i, behavior: "smooth" });
+      dots.forEach((d, di) => d.setAttribute("aria-selected", di === i));
+      if (openLink) openLink.href = links[i];
+    };
+
+    const play = () => {
+      if (reduce || slides.length < 2) return;
+      stop();
+      timer = setInterval(() => go(i + 1), AUTOPLAY_MS);
+    };
+    const stop = () => {
+      if (timer) clearInterval(timer);
+      timer = null;
+    };
+
+    prev?.addEventListener("click", (e) => { e.stopPropagation(); go(i - 1); play(); });
+    next?.addEventListener("click", (e) => { e.stopPropagation(); go(i + 1); play(); });
+    dots.forEach((d, di) => d.addEventListener("click", (e) => { e.stopPropagation(); go(di); play(); }));
+
+    track.addEventListener("click", () => {
+      window.open(links[i], "_blank", "noopener");
+    });
+
+    car.addEventListener("pointerenter", stop);
+    car.addEventListener("pointerleave", play);
+    car.addEventListener("pointerdown", stop);
+    car.addEventListener("pointerup", play);
+    car.addEventListener("touchstart", stop, { passive: true });
+    car.addEventListener("touchend", play, { passive: true });
+    car.addEventListener("focusin", stop);
+    car.addEventListener("focusout", play);
+
+    let resizeTick;
+    track.addEventListener("scroll", () => {
+      clearTimeout(resizeTick);
+      resizeTick = setTimeout(() => {
+        const idx = Math.round(track.scrollLeft / track.clientWidth);
+        i = idx;
+        dots.forEach((d, di) => d.setAttribute("aria-selected", di === i));
+        if (openLink) openLink.href = links[i];
+      }, 80);
+    }, { passive: true });
+
+    go(0);
+    play();
   });
 
   const form = $("#form"), note = $("#formNote");
