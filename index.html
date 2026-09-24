@@ -170,11 +170,11 @@ ul{list-style:none;padding:0}
   width:100%;
   padding:1.45rem 1.35rem 1.45rem 1.55rem;
   background:linear-gradient(135deg,rgba(255,255,255,.025),rgba(255,255,255,.008));
-  border:1px solid var(--line);
+  border:1px solid rgba(252,236,101,.55);
   border-radius:var(--r-lg);
-  opacity:1;
-  transform:none;
-  transition:border-color .3s ease,background .3s ease,box-shadow .3s ease;
+  opacity:0;
+  transform:translateY(38px);
+  transition:opacity .65s ease,transform .65s ease,border-color .3s ease,background .3s ease,box-shadow .3s ease;
 }
   @media (min-width:901px){
   .experience-card{
@@ -206,23 +206,23 @@ ul{list-style:none;padding:0}
 }.experience-card::before{content:"";position:absolute;left:-2.02rem;top:50%;width:.7rem;height:.7rem;border-radius:50%;background:#3b3b42;box-shadow:0 0 0 5px var(--bg),0 0 0 6px #3b3b42;transform:translateY(-50%);transition:background .35s ease,box-shadow .35s ease,transform .35s ease}
 .experience-card.is-visible{
   opacity:1;
-  transform:none;
+  transform:translateY(0);
 }
 .experience-card.is-active{
   opacity:1;
-  transform:none;
-  border-color:var(--line);
-  background:linear-gradient(135deg,rgba(255,255,255,.025),rgba(255,255,255,.008));
-  box-shadow:none;
+  transform:translateY(0);
+  border-color:rgba(252,236,101,.7);
+  background:linear-gradient(135deg,rgba(252,236,101,.045),rgba(255,255,255,.012));
+  box-shadow:0 0 0 1px rgba(252,236,101,.08),0 10px 30px rgba(252,236,101,.05);
 }
 .experience-card.is-active::before{
-  background:#3b3b42;
-  box-shadow:0 0 0 5px var(--bg),0 0 0 6px #3b3b42;
-  transform:translateY(-50%);
+  background:var(--accent);
+  box-shadow:0 0 0 5px var(--bg),0 0 0 6px var(--accent);
+  transform:translateY(-50%) scale(1.08);
 }
 .experience-card:hover{
-  transform:none;
-  border-color:rgba(252,236,101,.5);
+  transform:translateY(-4px);
+  border-color:var(--accent);
   background:linear-gradient(135deg,rgba(252,236,101,.045),rgba(255,255,255,.012));
 }
 .experience-main{min-width:0;padding-right:1.2rem;border-right:1px solid var(--line)}
@@ -1032,4 +1032,4 @@ const CONFIG = {
 </script>
 
 </body>
-        </html>
+                                                                                                                                                                                                                                                                         </html>
