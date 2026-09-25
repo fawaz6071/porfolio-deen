@@ -1,0 +1,29 @@
+backend:
+  name: github
+  repo: fawaz6071/portfolio-deen
+  branch: main
+  base_url: https://porfolio-deen.vercel.app
+  auth_endpoint: api/auth
+
+media_folder: "images/blog"
+public_folder: "/images/blog"
+
+publish_mode: simple
+
+collections:
+  - name: "blog"
+    label: "Articles de blog"
+    label_singular: "Article"
+    folder: "content/blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Titre", name: "title", widget: "string" }
+      - { label: "Date de publication", name: "date", widget: "datetime" }
+      - { label: "Image de couverture", name: "image", widget: "image", required: false }
+      - label: "Catégorie"
+        name: "category"
+        widget: "select"
+        options: ["Appels d'offres", "Juridique et conformité", "Marketing numérique", "Actualité"]
+      - { label: "Résumé (affiché sur la liste)", name: "excerpt", widget: "text" }
+      - { label: "Contenu de l'article", name: "body", widget: "markdown" }
