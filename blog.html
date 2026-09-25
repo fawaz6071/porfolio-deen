@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Blog — DND E-services</title>
+<meta name="description" content="Conseils sur les marchés publics, actualités juridiques et marketing digital." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#000; --panel:#0f0f10; --line:#26262a; --text:#fff;
+  --muted:#a0a0a6; --accent:#fcec65; --on-accent:#000;
+  --sans:"Montserrat",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --r-md:14px; --max:1160px;
+}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.5}
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:1.25rem}
+header.site-header{position:sticky;top:0;background:rgba(0,0,0,.85);backdrop-filter:blur(6px);border-bottom:1px solid var(--line);z-index:10}
+.wrap{position:relative}
+.nav{display:flex;align-items:center;justify-content:space-between;padding-block:1rem}
+.logo{color:var(--text);font-weight:700;text-decoration:none}
+.logo small{color:var(--accent)}
+.menu{display:flex;align-items:center;gap:1.25rem;list-style:none;flex-wrap:wrap}
+.menu a{color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:600}
+.menu a:hover,.menu a.is-active{color:var(--accent)}
+.burger{display:none;width:44px;height:44px;border:1px solid var(--line);border-radius:9px;background:transparent;cursor:pointer;place-items:center;gap:5px;padding:0}
+.burger span{display:block;width:20px;height:2px;background:var(--text);border-radius:2px;transition:transform .25s,opacity .2s}
+.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media (max-width:1060px){
+  .burger{display:grid}
+  .menu{position:absolute;top:74px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;padding:.75rem 1.25rem 1.5rem;background:#000;border-bottom:1px solid var(--line);display:none}
+  .menu.open{display:flex}
+  .menu a{display:block;padding:.85rem 0;font-size:1.05rem}
+}
+main{padding-block:3rem}
+h1{font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-.02em}
+.lead{color:var(--muted);margin-top:.6rem;max-width:60ch}
+.posts{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem;margin-top:2.5rem}
+.post-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden;text-decoration:none;color:var(--text);display:flex;flex-direction:column;transition:transform .2s,border-color .2s}
+.post-card:hover{transform:translateY(-3px);border-color:var(--accent)}
+.post-card img{width:100%;aspect-ratio:16/9;object-fit:cover;background:var(--line)}
+.post-body{padding:1.1rem}
+.post-cat{color:var(--accent);font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.03em}
+.post-title{font-size:1.1rem;font-weight:700;margin-top:.5rem}
+.post-excerpt{color:var(--muted);font-size:.9rem;margin-top:.5rem;text-align:justify}
+.post-date{color:var(--muted);font-size:.78rem;margin-top:.8rem;display:block}
+.state-msg{color:var(--muted);margin-top:2rem}
+footer{border-top:1px solid var(--line);padding-block:2rem;text-align:center;color:var(--muted);font-size:.85rem}
+footer a{color:var(--accent)}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="logo" href="index.html">DND <small>E-services</small></a>
+    <ul class="menu" id="menu">
+      <li><a href="index.html#accueil">Accueil</a></li>
+      <li><a href="index.html#realisations">Réalisations</a></li>
+      <li><a href="apropos.html">À propos</a></li>
+      <li><a href="blog.html" class="is-active">Blog</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>Blog</h1>
+  <p class="lead">Conseils sur les marchés publics, actualités juridiques et marketing digital.</p>
+
+  <div class="posts" id="posts"></div>
+  <p class="state-msg" id="state-msg">Chargement des articles…</p>
+</main>
+
+<footer>© <span id="year"></span> DND E-services — <a href="index.html">Retour au portfolio</a></footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+const burger = document.querySelector(".burger"), menu = document.getElementById("menu");
+function setMenu(open){
+  menu.classList.toggle("open", open);
+  burger.setAttribute("aria-expanded", open);
+  burger.setAttribute("aria-label", open ? "Fermer le menu" : "Ouvrir le menu");
+}
+burger.addEventListener("click", () => setMenu(!menu.classList.contains("open")));
+menu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => setMenu(false)));
+
+const REPO = "fawaz6071/portfolio-deen";
+const BRANCH = "main";
+const CONTENT_PATH = "content/blog";
+
+async function loadPosts() {
+  const listEl = document.getElementById('posts');
+  const msgEl = document.getElementById('state-msg');
+  try {
+    const apiUrl = `https://api.github.com/repos/${REPO}/contents/${CONTENT_PATH}?ref=${BRANCH}`;
+    const files = await fetch(apiUrl).then(r => {
+      if (!r.ok) throw new Error("Impossible de lister les articles (dépôt introuvable ou privé).");
+      return r.json();
+    });
+
+    const mdFiles = files.filter(f => f.name.endsWith(".md"));
+    if (mdFiles.length === 0) {
+      msgEl.textContent = "Aucun article publié pour le moment.";
+      return;
+    }
+
+    const posts = await Promise.all(mdFiles.map(async f => {
+      const raw = await fetch(f.download_url).then(r => r.text());
+      return { ...parseFrontmatter(raw), slug: f.name.replace(/\.md$/, "") };
+    }));
+
+    posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    listEl.innerHTML = posts.map(p => `
+      <a class="post-card" href="blog-post.html?slug=${encodeURIComponent(p.slug)}">
+        ${p.image ? `<img src="${p.image}" alt="${escapeHtml(p.title)}">` : ""}
+        <div class="post-body">
+          <span class="post-cat">${escapeHtml(p.category || "")}</span>
+          <div class="post-title">${escapeHtml(p.title || "Sans titre")}</div>
+          <p class="post-excerpt">${escapeHtml(p.excerpt || "")}</p>
+          <span class="post-date">${formatDate(p.date)}</span>
+        </div>
+      </a>
+    `).join("");
+    msgEl.remove();
+  } catch (err) {
+    msgEl.textContent = "Le blog n'est pas encore configuré (voir README-BLOG.md).";
+    console.error(err);
+  }
+}
+
+// Parseur minimal de frontmatter YAML (title/date/image/category/excerpt)
+function parseFrontmatter(raw) {
+  const match = raw.match(/^---\s*([\s\S]*?)\s*---/);
+  const data = {};
+  if (match) {
+    match[1].split("\n").forEach(line => {
+      const idx = line.indexOf(":");
+      if (idx === -1) return;
+      const key = line.slice(0, idx).trim();
+      let val = line.slice(idx + 1).trim().replace(/^["']|["']$/g, "");
+      data[key] = val;
+    });
+  }
+  return data;
+}
+
+function formatDate(d) {
+  if (!d) return "";
+  return new Date(d).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" });
+}
+
+function escapeHtml(str) {
+  return String(str).replace(/[&<>"']/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
+}
+
+loadPosts();
+</script>
+</body>
+</html>

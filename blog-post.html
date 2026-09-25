@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Article — DND E-services</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.0/marked.min.js"></script>
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#000; --panel:#0f0f10; --line:#26262a; --text:#fff;
+  --muted:#a0a0a6; --accent:#fcec65;
+  --sans:"Montserrat",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --max:760px;
+}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.65}
+.wrap{max-width:var(--max);margin-inline:auto;padding-inline:1.25rem}
+header.site-header{border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding-block:1rem;max-width:1160px;margin-inline:auto;padding-inline:1.25rem}
+.logo{color:var(--text);font-weight:700;text-decoration:none}
+.logo small{color:var(--accent)}
+.back{color:var(--muted);text-decoration:none;font-size:.85rem;font-weight:600}
+.back:hover{color:var(--accent)}
+main{padding-block:3rem}
+.post-cat{color:var(--accent);font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.03em}
+h1{font-size:clamp(1.8rem,4vw,2.4rem);letter-spacing:-.02em;margin-top:.6rem}
+.post-date{color:var(--muted);font-size:.85rem;margin-top:.8rem;display:block}
+.post-cover{width:100%;border-radius:14px;margin-top:2rem;border:1px solid var(--line)}
+.post-content{margin-top:2rem;text-align:justify}
+.post-content p{margin-bottom:1.1rem}
+.post-content h2,.post-content h3{margin-top:1.8rem;margin-bottom:.7rem;letter-spacing:-.01em}
+.post-content a{color:var(--accent)}
+.state-msg{color:var(--muted);margin-top:2rem}
+footer{border-top:1px solid var(--line);padding-block:2rem;text-align:center;color:var(--muted);font-size:.85rem}
+footer a{color:var(--accent)}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="nav">
+    <a class="logo" href="index.html">DND <small>E-services</small></a>
+    <a class="back" href="blog.html">← Retour au blog</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <article id="article">
+    <p class="state-msg" id="state-msg">Chargement de l'article…</p>
+  </article>
+</main>
+
+<footer>© <span id="year"></span> DND E-services — <a href="index.html">Retour au portfolio</a></footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+const REPO = "fawaz6071/portfolio-deen";
+const BRANCH = "main";
+const CONTENT_PATH = "content/blog";
+
+const params = new URLSearchParams(location.search);
+const slug = params.get("slug");
+
+async function loadPost() {
+  const articleEl = document.getElementById("article");
+  if (!slug) {
+    articleEl.innerHTML = `<p class="state-msg">Article introuvable.</p>`;
+    return;
+  }
+  try {
+    const url = `https://raw.githubusercontent.com/${REPO}/${BRANCH}/${CONTENT_PATH}/${slug}.md`;
+    const raw = await fetch(url).then(r => {
+      if (!r.ok) throw new Error("Article introuvable.");
+      return r.text();
+    });
+
+    const { data, content } = parseFrontmatter(raw);
+    document.title = `${data.title || "Article"} — DND E-services`;
+
+    articleEl.innerHTML = `
+      <span class="post-cat">${escapeHtml(data.category || "")}</span>
+      <h1>${escapeHtml(data.title || "Sans titre")}</h1>
+      <span class="post-date">${formatDate(data.date)}</span>
+      ${data.image ? `<img class="post-cover" src="${data.image}" alt="${escapeHtml(data.title)}">` : ""}
+      <div class="post-content">${marked.parse(content)}</div>
+    `;
+  } catch (err) {
+    articleEl.innerHTML = `<p class="state-msg">Impossible de charger cet article.</p>`;
+    console.error(err);
+  }
+}
+
+function parseFrontmatter(raw) {
+  const match = raw.match(/^---\s*([\s\S]*?)\s*---\s*([\s\S]*)$/);
+  const data = {};
+  if (!match) return { data, content: raw };
+  match[1].split("\n").forEach(line => {
+    const idx = line.indexOf(":");
+    if (idx === -1) return;
+    const key = line.slice(0, idx).trim();
+    let val = line.slice(idx + 1).trim().replace(/^["']|["']$/g, "");
+    data[key] = val;
+  });
+  return { data, content: match[2] };
+}
+
+function formatDate(d) {
+  if (!d) return "";
+  return new Date(d).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" });
+}
+
+function escapeHtml(str) {
+  return String(str).replace(/[&<>"']/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
+}
+
+loadPost();
+</script>
+</body>
+</html>
