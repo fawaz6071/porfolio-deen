@@ -1,6 +1,5 @@
 ---
-title: "Vers une généralisation de la négociation dans les marchés publics : ce
-  qui change en 2026"
+title: Vers une généralisation de la négociation dans les marchés publics.
 date: 2026-09-26T10:57:00.000+00:00
 image: /images/blog/1000057157.png
 category: Appels d'offres
