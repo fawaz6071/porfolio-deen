@@ -1,6 +1,7 @@
 ---
 title: Comment bien préparer sa réponse à un appel d'offres public
 date: 2026-09-26T10:31:00.000+00:00
+image: /images/blog/1000058621.jpg
 category: Appels d'offres
 excerpt: Les points clés pour structurer une réponse solide à un marché public
   et maximiser ses chances d'être retenu.
